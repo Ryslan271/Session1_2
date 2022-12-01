@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="82b3804ad9db4dc29f871480ab31cc2d" Name="Diagram1">
+        <EntityTypeShape EntityType="SessioModel.MeasureUnit" Width="1.5" PointX="5.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.Order" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.Product" Width="1.5" PointX="8" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.ProductOrder" Width="1.5" PointX="10.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.ProductReceipt" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.Role" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.Status" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.SupplierCountry" Width="1.5" PointX="10.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SessioModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="SessioModel.FK_Product_MeasureUnit" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.FK_Order_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.FK_Order_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.FK_ProductReceipt_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.FK_ProductOrder_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.ProductSupplierCountry" ManuallyRouted="false" />
+        <AssociationConnector Association="SessioModel.FK_ProductOrder_Order" />
+        <EntityTypeShape EntityType="SessioModel.Gender" Width="1.5" PointX="0.75" PointY="8.875" />
+        <AssociationConnector Association="SessioModel.FK_User_Gender" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
