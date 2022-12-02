@@ -73,16 +73,22 @@
     <Compile Include="Order.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderStatus.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Product.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProductOrder.cs">
-      <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductReceipt.cs">
+    <Compile Include="ProductsReceipt.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
@@ -103,7 +109,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Sessio.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Status.cs">
+    <Compile Include="Supplier.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
     <Compile Include="SupplierCountry.cs">
@@ -125,6 +131,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

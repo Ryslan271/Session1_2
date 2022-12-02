@@ -25,15 +25,16 @@ namespace Session12
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<MeasureUnit> MeasureUnit { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<Order_Product> Order_Product { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductOrder> ProductOrder { get; set; }
-        public virtual DbSet<ProductReceipt> ProductReceipt { get; set; }
+        public virtual DbSet<ProductsReceipt> ProductsReceipt { get; set; }
         public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<Supplier> Supplier { get; set; }
         public virtual DbSet<SupplierCountry> SupplierCountry { get; set; }
         public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<Gender> Gender { get; set; }
     }
 }

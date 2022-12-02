@@ -17,23 +17,23 @@ namespace Session12
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ProductOrder = new HashSet<ProductOrder>();
+            this.Order_Product = new HashSet<Order_Product>();
             this.SupplierCountry = new HashSet<SupplierCountry>();
         }
     
-        public int id { get; set; }
+        public int ID { get; set; }
+        public string Title { get; set; }
         public byte[] Photo { get; set; }
-        public string Name { get; set; }
         public decimal Cost { get; set; }
         public string Description { get; set; }
-        public System.DateTime EditionDate { get; set; }
+        public System.DateTime AdditionDateTime { get; set; }
         public int Quantity { get; set; }
-        public int MeasureUnitId { get; set; }
-        public int SupplierCountryId { get; set; }
+        public int MeasureUnitID { get; set; }
+        public int SupplierCountryID { get; set; }
     
         public virtual MeasureUnit MeasureUnit { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductOrder> ProductOrder { get; set; }
+        public virtual ICollection<Order_Product> Order_Product { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierCountry> SupplierCountry { get; set; }
     }

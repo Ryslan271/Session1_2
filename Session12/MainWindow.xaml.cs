@@ -33,8 +33,6 @@ namespace Session12
         public MainWindow()
         {
             InitializeComponent();
-
-            MainFrame.Navigate(new Pages.LoginPage());
         }
     }
 }

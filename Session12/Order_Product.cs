@@ -12,14 +12,14 @@ namespace Session12
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductOrder
+    public partial class Order_Product
     {
-        public int OrderId { get; set; }
-        public int ProductId { get; set; }
+        public int OrderID { get; set; }
+        public int ProductID { get; set; }
         public int Quantity { get; set; }
         public decimal PurchasePrice { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

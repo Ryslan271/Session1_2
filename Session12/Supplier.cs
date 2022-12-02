@@ -12,18 +12,9 @@ namespace Session12
     using System;
     using System.Collections.Generic;
     
-    public partial class Status
+    public partial class Supplier
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Status()
-        {
-            this.Order = new HashSet<Order>();
-        }
-    
-        public int id { get; set; }
-        public string Title { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Order { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
     }
 }

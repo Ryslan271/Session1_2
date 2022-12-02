@@ -12,10 +12,10 @@ namespace Session12
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductReceipt
+    public partial class ProductsReceipt
     {
-        public int id { get; set; }
-        public int OrderId { get; set; }
+        public int ID { get; set; }
+        public int OrderID { get; set; }
     
         public virtual Order Order { get; set; }
     }

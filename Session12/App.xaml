@@ -2,10 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Session12"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Pages/LoginPage.xaml">
     <Application.Resources>
-        <Style x:Key="StyleGrid">
+        <Style x:Key="StyleStackPanel" TargetType="StackPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextBlock.Foreground" Value="#FF2B2B2B"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="TextBlock.FontSize" Value="18"/>
+            <Setter Property="TextBlock.FontWeight" Value="DemiBold"/>
             <Setter Property="TextBlock.FontFamily" Value="Bahnschrift SemiBold"/>
         </Style>
     </Application.Resources>

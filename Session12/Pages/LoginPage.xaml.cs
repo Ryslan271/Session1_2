@@ -18,12 +18,9 @@ namespace Session12.Pages
     /// <summary>
     /// Логика взаимодействия для LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : Window
     {
-        public LoginPage()
-        {
-            InitializeComponent();
-        }
+        public LoginPage() => InitializeComponent();
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
@@ -37,7 +34,14 @@ namespace Session12.Pages
 
             App.User = user;
 
-            MainWindow.Instance.MainFrame.Navigate();
+            new MainWindow().Show();
+            Hide();
+        }
+
+        private void GoToRegistrationPage_Click(object sender, RoutedEventArgs e)
+        {
+            new RegistrationPage().Show();
+            Close();
         }
     }
 }
