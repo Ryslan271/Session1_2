@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Session12"
         mc:Ignorable="d"
         Icon="Recourse/icon-Logo.png"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Доставка" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="12*"/>
@@ -17,8 +17,6 @@
             <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
 
-        <Image />
-
         <StackPanel Grid.Column="0" Grid.Row="1">
             <Button Style="{StaticResource MenuButton}">
                 <Button.Content>
@@ -26,7 +24,7 @@
                         Source="Recourse/icon_main.png"
                         Margin="5 0 0 0"/>
                 </Button.Content>
-            </Button>
+            </Button>   
             <Button Style="{StaticResource MenuButton}">
                 <Button.Content>
                     <Image
