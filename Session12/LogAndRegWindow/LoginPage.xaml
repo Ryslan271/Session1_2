@@ -12,6 +12,8 @@
     <StackPanel Style="{StaticResource ResourceKey=StyleStackPanel}">
         <TextBlock Text="Авторизация" Margin="0 0 0 20" FontSize="25" FontWeight="Bold"/>
 
+        <TextBlock x:Name="InfoMessage" Visibility="Collapsed" Foreground="Red" TextWrapping="Wrap"/>
+
         <TextBlock Margin="0 10 0 0" Text="Логин"/>
         <TextBox x:Name="LoginBox" BorderThickness="0 0 0 1" MinWidth="200"/>
         <Separator/>
