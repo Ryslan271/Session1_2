@@ -20,6 +20,11 @@
         <TextBlock Margin="0 10 0 0" Text="Пароль"/>
         <PasswordBox x:Name="PasswordBox" BorderThickness="0 0 0 1" MinWidth="200"/>
         <Separator/>
+        <StackPanel Orientation="Horizontal" Style="{StaticResource ResourceKey=StyleStackPanel}">
+            <TextBlock Text="Запомнить меня "/>
+            <CheckBox VerticalAlignment="Center"/>
+        </StackPanel>
+        <Separator/>
         <Button Margin="0 10 0 0" x:Name="Enter" Content="Войти" Padding="6 4" Click="Enter_Click"/>
         <Button Margin="0 10 0 0" x:Name="GoToRegistrationPage" Padding="6 4" Content="Зарегестриловаться" Click="GoToRegistrationPage_Click"/>
     </StackPanel>

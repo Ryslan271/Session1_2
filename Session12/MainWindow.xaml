@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Session12"
         mc:Ignorable="d"
+        Icon="Recourse/icon-Logo.png"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -13,13 +14,62 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
-        
+
+        <Image />
+
         <StackPanel Grid.Column="0" Grid.Row="1">
-            
+            <Button Style="{StaticResource MenuButton}">
+                <Button.Content>
+                    <Image
+                        Source="Recourse/icon_main.png"
+                        Margin="5 0 0 0"/>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource MenuButton}">
+                <Button.Content>
+                    <Image
+                        Source="Recourse/icon_product.png"
+                        Margin="5 0 0 0"/>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource MenuButton}">
+                <Button.Content>
+                    <Image
+                        Source="Recourse/icon_postavchik.png"
+                        Margin="5 0 0 0"/>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource MenuButton}">
+                <Button.Content>
+                    <Image
+                        Source="Recourse/icon_orders.png"
+                        Margin="5 0 0 0"/>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource MenuButton}">
+                <Button.Content>
+                    <Image
+                        Source="Recourse/icon_goinyourhouse.png"
+                        Margin="5 0 0 0"/>
+                </Button.Content>
+            </Button>
+            <Button 
+                Style="{StaticResource MenuButton}"
+                Click="ButtonClickExit">
+                <Button.Content>
+                    <Image
+                        Source="Recourse/icon_exit.png"
+                        Margin="5 0 0 0"/>
+                </Button.Content>
+            </Button>
         </StackPanel>
 
-        <Frame x:Name="MainFrame" Grid.Column="1" Margin="5" Grid.Row="1"/>
+        <Frame
+            x:Name="MainFrame"
+            Grid.Column="1"
+            Margin="5"
+            Grid.Row="1"/>
     </Grid>
 </Window>

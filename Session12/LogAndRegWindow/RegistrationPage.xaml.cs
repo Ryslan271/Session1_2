@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -50,6 +51,14 @@ namespace Session12.Pages
                 return;
             }
 
+            (string message, bool flag) = ValidatePassword(PasswordBox.Password.Trim());
+
+            if ( flag == false)
+            {
+                MessageBox.Show(message, "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             User newUser = new User()
             {
                 Email = EmailBox.Text.Trim(),
@@ -72,6 +81,19 @@ namespace Session12.Pages
 
             new MainWindow().Show();
             Hide();
+        }
+
+        private (string, bool) ValidatePassword(string password)
+        {
+            if (password.Length < 6)
+                return ("Пароль должен быть не менее 6 символов", false);
+            if (!password.Any(c => Char.IsUpper(c)))
+                return ("В пароле должна быть хотя бы одна прописная буква", false);
+            if (!Regex.IsMatch(password, @"\d"))
+                return ("В пароле должна быть хотя бы одна цифра", false);
+            if (!Regex.IsMatch(password, @"[!@#$%^]"))
+                return ("В пароле должен быть хотя бы одний из символов ! @ # $ % ^", false);
+            return ("", true);
         }
 
         private void GoToLoginPagePage_Click(object sender, RoutedEventArgs e)

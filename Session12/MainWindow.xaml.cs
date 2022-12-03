@@ -34,5 +34,7 @@ namespace Session12
         {
             InitializeComponent();
         }
+
+        private void ButtonClickExit(object sender, RoutedEventArgs e) => Close();
     }
 }
