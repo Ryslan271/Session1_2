@@ -67,6 +67,12 @@
     <Compile Include="Gender.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
+    <Compile Include="LogAndRegWindow\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogAndRegWindow\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MeasureUnit.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
@@ -78,12 +84,6 @@
     </Compile>
     <Compile Include="Order_Product.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LogAndRegWindow\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="LogAndRegWindow\RegistrationPage.xaml.cs">
-      <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductsListPage.xaml.cs">
       <DependentUpon>ProductsListPage.xaml</DependentUpon>
@@ -181,6 +181,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Recourse\NetPhotoProduct.jpg" />
+    <Content Include="Sessio.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sessio.edmx</DependentUpon>
+      <LastGenOutput>Sessio.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Sessio.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Sessio.edmx</DependentUpon>
+      <LastGenOutput>Sessio.cs</LastGenOutput>
+    </Content>
     <Resource Include="Recourse\icon_main.png" />
     <Resource Include="Recourse\icon_postavchik.png" />
     <Resource Include="Recourse\icon_product.png" />
@@ -188,16 +199,6 @@
     <Resource Include="Recourse\icon_exit.png" />
     <Resource Include="Recourse\icon-Logo.png" />
     <Content Include="Recourse\icon_orders.png" />
-    <Content Include="Sessio.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Sessio.Context.cs</LastGenOutput>
-      <DependentUpon>Sessio.edmx</DependentUpon>
-    </Content>
-    <Content Include="Sessio.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Sessio.edmx</DependentUpon>
-      <LastGenOutput>Sessio.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

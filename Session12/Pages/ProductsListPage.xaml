@@ -9,35 +9,148 @@
       Title="ProductsListPage">
 
     <StackPanel>
-        <ListView ItemsSource="{Binding Products}" d:ItemsSource="{d:SampleData ItemCount=10}" BorderBrush="Black">
+        <StackPanel
+            Orientation="Horizontal"
+            Style="{StaticResource ResourceKey=StyleStackPanelProductSortFilterSeacher}"
+            Margin="0 0 0 15">
+            <StackPanel
+                Orientation="Vertical"
+                Margin="10 0 15 0">
+                <TextBlock 
+                    Text="Сортировка"
+                    Margin="0 0 0 5"/>
+                <ComboBox
+                    SelectedIndex="0"
+                    x:Name="SortProduct">
+                    <ComboBoxItem
+                        Tag="AToZ"
+                        Content="От А до Я"/>
+                    <ComboBoxItem
+                        Tag="ZtoA"
+                        Content="От Я до А"/>
+                    <ComboBoxItem
+                        Tag="DateAccording "
+                        Content="Дата по возрастанию"/>
+                    <ComboBoxItem
+                        Tag="DateDescending"
+                        Content="Дата по убыванию"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel
+                Orientation="Vertical"
+                Margin="0 0 15 0">
+                <TextBlock
+                    Text="Единица изменения"
+                    Margin="0 0 0 5"/>
+                <ComboBox
+                    x:Name="FilterProduct"
+                    SelectedIndex="0"/>
+            </StackPanel>
+            <StackPanel
+                Orientation="Vertical">
+                <TextBlock
+                    Text="Название или описание"
+                    Margin="0 0 0 5"/>
+                <TextBox
+                    MinWidth="150"
+                    x:Name="NameDisSearchTb"/>
+            </StackPanel>
+        </StackPanel>
+
+        <ListView
+            ItemsSource="{Binding Products}"
+            d:ItemsSource="{d:SampleData ItemCount=10}"
+            BorderBrush="Black">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                                    <ContentPresenter/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger
+                                        Property="IsMouseOver"
+                                        Value="True">
+                                        <Setter
+                                            Property="Background"
+                                            Value="Aqua"/>
+                                        <Setter
+                                            Property="BorderBrush"
+                                            Value="#83CC16" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <Border
+                        BorderBrush="Black"
+                        BorderThickness=" 0 0 0 2"
+                        Padding="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                        <Image Grid.Column="0" Grid.RowSpan="3" Source="{Binding Photo}"/>
+                            <Border
+                                Width="100"
+                                Height="100"
+                                Margin="0 0 10 0"
+                                Grid.Column="0"
+                                Grid.RowSpan="3"
+                                BorderBrush="Black"
+                                BorderThickness="2"
+                                VerticalAlignment="Center">
+                                <Image
+                                    Width="100"
+                                    Height="100">
+                                    <Image.Source>
+                                        <Binding
+                                            Path="Photo">
+                                            <Binding.TargetNullValue>
+                                                <BitmapImage UriSource="/Recourse/NetPhotoProduct.jpg"/>
+                                            </Binding.TargetNullValue>
+                                        </Binding>
+                                    </Image.Source>
+                                </Image>
+                            </Border>
 
-                        <TextBlock Grid.Column="1" Grid.Row="0">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} за {1}">
-                                    <Binding Path="Title"/>
-                                    <Binding Path="AdditionDateTime"/>
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-                        <TextBlock Text="{Binding Path=Description}" Grid.Column="1" Grid.Row="1"/>
-                        <TextBlock Text="{Binding Path=Cost}" Grid.Column="1" Grid.Row="3"/>
-                        
-
-                    </Grid>
+                            <TextBlock
+                                Grid.Column="1"
+                                Grid.Row="0">
+                                <TextBlock.Text>
+                                    <MultiBinding
+                                        StringFormat="{}{0} за {1}">
+                                        <Binding
+                                            Path="Title"/>
+                                        <Binding
+                                            Path="AdditionDateTime"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                            <TextBlock
+                                Text="{Binding Path=Description}"
+                                Grid.Column="1"
+                                Grid.Row="1"/>
+                            <TextBlock
+                                Text="{Binding Path=Cost}"
+                                Grid.Column="1"
+                                Grid.Row="3"/>
+                        </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -33,6 +33,27 @@
         </Style>
         <!--#endregion-->
 
+        <!--#region Стиль для фильтрации, сортировки и поиска в списке продуктов -->
+        <Style x:Key="StyleStackPanelProductSortFilterSeacher"
+               TargetType="StackPanel">
+            <Setter
+                Property="TextBlock.Foreground"
+                Value="#FF2B2B2B"/>
+            <Setter
+                Property="TextBlock.TextAlignment"
+                Value="Center"/>
+            <Setter
+                Property="TextBlock.FontSize"
+                Value="14"/>
+            <Setter 
+                Property="TextBlock.FontWeight"
+                Value="DemiBold"/>
+            <Setter 
+                Property="TextBlock.FontFamily"
+                Value="Bahnschrift SemiBold"/>
+        </Style>
+        <!--#endregion-->
+
         <!--#region Стиль для кнопок навигации в основном окне -->
         <Style x:Key="MenuButton" 
                TargetType="Button">
@@ -99,6 +120,30 @@
             </Setter>
         </Style>
         <!--#endregion-->
-        
+
+        <Style x:Key="StyleProductList" TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger
+                                        Property="IsMouseOver"
+                                        Value="True">
+                                <Setter
+                                            Property="Background"
+                                            Value="Aqua"/>
+                                <Setter
+                                            Property="BorderBrush"
+                                            Value="#83CC16" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

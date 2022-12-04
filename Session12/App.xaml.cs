@@ -14,7 +14,7 @@ namespace Session12
     /// </summary>
     public partial class App : Application
     {
-        public static SessioEntities db =  new SessioEntities();
+        public static Sessio1Entities db =  new Sessio1Entities();
 
         public static User User { get; set; }
 

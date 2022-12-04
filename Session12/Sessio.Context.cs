@@ -13,10 +13,10 @@ namespace Session12
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SessioEntities : DbContext
+    public partial class Sessio1Entities : DbContext
     {
-        public SessioEntities()
-            : base("name=SessioEntities")
+        public Sessio1Entities()
+            : base("name=Sessio1Entities")
         {
         }
     

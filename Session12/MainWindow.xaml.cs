@@ -35,6 +35,31 @@ namespace Session12
             InitializeComponent();
         }
 
+        #region Обработчики
         private void ButtonClickExit(object sender, RoutedEventArgs e) => Close();
+
+        private void OpenMainList(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OpenProductList(object sender, RoutedEventArgs e) => MainFrame.Navigate(new Pages.ProductsListPage());
+
+        private void OpenPostavchikList(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OpenOrdersList(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OpenGoinYourHouseList(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,26 +22,35 @@ namespace Session12.Pages
     /// </summary>
     public partial class ProductsListPage : Page
     {
-        #region DependencyPropertyes
+        #region Свойства 
 
-        public ObservableCollection<Product> Products
-        {
-            get { return (ObservableCollection<Product>)GetValue(ProductsProperty); }
-            set { SetValue(ProductsProperty, value); }
-        }
-
-        public static readonly DependencyProperty ProductsProperty =
-            DependencyProperty.Register("Products", typeof(ObservableCollection<Product>), typeof(ProductsListPage));
+        public ICollectionView Products { get; set; }
 
         #endregion
-
 
         public ProductsListPage()
         {
 
-            Products = App.db.Product.Local;
+            Products = new CollectionViewSource { Source = App.db.Product.Local }.View;
 
             InitializeComponent();
+
+            #region Поиск
+
+            NameDisSearchTb.TextChanged += (s, e) => Products.Refresh();
+
+            Products.Filter += (obj) =>
+            {
+                var product = obj as Product;
+
+                var search = NameDisSearchTb.Text;
+
+                if (product.Title.Contains(search) || product.Description.Contains(search))
+                    return true;
+
+                return false;
+            };
+            #endregion
         }
     }
 }

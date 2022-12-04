@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище SessioModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище SessioModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="ID" />
@@ -58,7 +58,6 @@
           <Property Name="AdditionDateTime" Type="datetime" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="MeasureUnitID" Type="int" Nullable="false" />
-          <Property Name="SupplierCountryID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product_SupplierCountry">
           <Key>
@@ -183,7 +182,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product_SupplierCountry_Product">
+        <Association Name="FK_Product_SupplierCountry_Product1">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
           <End Role="Product_SupplierCountry" Type="Self.Product_SupplierCountry" Multiplicity="*" />
           <ReferentialConstraint>
@@ -280,7 +279,7 @@
             <End Role="MeasureUnit" EntitySet="MeasureUnit" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product_SupplierCountry_Product" Association="Self.FK_Product_SupplierCountry_Product">
+          <AssociationSet Name="FK_Product_SupplierCountry_Product1" Association="Self.FK_Product_SupplierCountry_Product1">
             <End Role="Product" EntitySet="Product" />
             <End Role="Product_SupplierCountry" EntitySet="Product_SupplierCountry" />
           </AssociationSet>
@@ -301,78 +300,26 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SessioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="SessioEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Gender" EntityType="SessioModel.Gender" />
-          <EntitySet Name="MeasureUnit" EntityType="SessioModel.MeasureUnit" />
-          <EntitySet Name="Order" EntityType="SessioModel.Order" />
-          <EntitySet Name="Order_Product" EntityType="SessioModel.Order_Product" />
-          <EntitySet Name="OrderStatus" EntityType="SessioModel.OrderStatus" />
-          <EntitySet Name="Product" EntityType="SessioModel.Product" />
-          <EntitySet Name="ProductsReceipt" EntityType="SessioModel.ProductsReceipt" />
-          <EntitySet Name="Role" EntityType="SessioModel.Role" />
-          <EntitySet Name="Supplier" EntityType="SessioModel.Supplier" />
-          <EntitySet Name="SupplierCountry" EntityType="SessioModel.SupplierCountry" />
-          <EntitySet Name="User" EntityType="SessioModel.User" />
-          <AssociationSet Name="FK_User_Gender" Association="SessioModel.FK_User_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Product_MeasureUnit" Association="SessioModel.FK_Product_MeasureUnit">
-            <End Role="MeasureUnit" EntitySet="MeasureUnit" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_OrderStatus" Association="SessioModel.FK_Order_OrderStatus">
-            <End Role="OrderStatus" EntitySet="OrderStatus" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Product_Order" Association="SessioModel.FK_Order_Product_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="Order_Product" EntitySet="Order_Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_User" Association="SessioModel.FK_Order_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_User1" Association="SessioModel.FK_Order_User1">
-            <End Role="User" EntitySet="User" />
-            <End Role="Order" EntitySet="Order" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductsReceipt_Order" Association="SessioModel.FK_ProductsReceipt_Order">
-            <End Role="Order" EntitySet="Order" />
-            <End Role="ProductsReceipt" EntitySet="ProductsReceipt" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Order_Product_Product" Association="SessioModel.FK_Order_Product_Product">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Order_Product" EntitySet="Order_Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Role" Association="SessioModel.FK_User_Role">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="Product_SupplierCountry" Association="SessioModel.Product_SupplierCountry">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="SupplierCountry" EntitySet="SupplierCountry" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="SessioModel.FK_User_Gender" FromRole="Gender" ToRole="User" />
+          <Property Name="Title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Gender" FromRole="Gender" ToRole="User" />
         </EntityType>
         <EntityType Name="MeasureUnit">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="SessioModel.FK_Product_MeasureUnit" FromRole="MeasureUnit" ToRole="Product" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_MeasureUnit" FromRole="MeasureUnit" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -383,11 +330,11 @@
           <Property Name="UserCustomerID" Type="Int32" Nullable="false" />
           <Property Name="UserExecutorID" Type="Int32" Nullable="false" />
           <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OrderStatus" Relationship="SessioModel.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
-          <NavigationProperty Name="Order_Product" Relationship="SessioModel.FK_Order_Product_Order" FromRole="Order" ToRole="Order_Product" />
-          <NavigationProperty Name="User" Relationship="SessioModel.FK_Order_User" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="User1" Relationship="SessioModel.FK_Order_User1" FromRole="Order" ToRole="User" />
-          <NavigationProperty Name="ProductsReceipt" Relationship="SessioModel.FK_ProductsReceipt_Order" FromRole="Order" ToRole="ProductsReceipt" />
+          <NavigationProperty Name="OrderStatus" Relationship="Self.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
+          <NavigationProperty Name="Order_Product" Relationship="Self.FK_Order_Product_Order" FromRole="Order" ToRole="Order_Product" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Order_User1" FromRole="Order" ToRole="User" />
+          <NavigationProperty Name="ProductsReceipt" Relationship="Self.FK_ProductsReceipt_Order" FromRole="Order" ToRole="ProductsReceipt" />
         </EntityType>
         <EntityType Name="Order_Product">
           <Key>
@@ -397,34 +344,33 @@
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="PurchasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <NavigationProperty Name="Order" Relationship="SessioModel.FK_Order_Product_Order" FromRole="Order_Product" ToRole="Order" />
-          <NavigationProperty Name="Product" Relationship="SessioModel.FK_Order_Product_Product" FromRole="Order_Product" ToRole="Product" />
+          <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Product_Order" FromRole="Order_Product" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Order_Product_Product" FromRole="Order_Product" ToRole="Product" />
         </EntityType>
         <EntityType Name="OrderStatus">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Order" Relationship="SessioModel.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AdditionDateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="MeasureUnitID" Type="Int32" Nullable="false" />
-          <Property Name="SupplierCountryID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MeasureUnit" Relationship="SessioModel.FK_Product_MeasureUnit" FromRole="Product" ToRole="MeasureUnit" />
-          <NavigationProperty Name="Order_Product" Relationship="SessioModel.FK_Order_Product_Product" FromRole="Product" ToRole="Order_Product" />
-          <NavigationProperty Name="SupplierCountry" Relationship="SessioModel.Product_SupplierCountry" FromRole="Product" ToRole="SupplierCountry" />
+          <NavigationProperty Name="MeasureUnit" Relationship="Self.FK_Product_MeasureUnit" FromRole="Product" ToRole="MeasureUnit" />
+          <NavigationProperty Name="Order_Product" Relationship="Self.FK_Order_Product_Product" FromRole="Product" ToRole="Order_Product" />
+          <NavigationProperty Name="SupplierCountry" Relationship="Self.Product_SupplierCountry" FromRole="Product" ToRole="SupplierCountry" />
         </EntityType>
         <EntityType Name="ProductsReceipt">
           <Key>
@@ -432,53 +378,53 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="SessioModel.FK_ProductsReceipt_Order" FromRole="ProductsReceipt" ToRole="Order" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_ProductsReceipt_Order" FromRole="ProductsReceipt" ToRole="Order" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="SessioModel.FK_User_Role" FromRole="Role" ToRole="User" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="SupplierCountry">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="TItle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="SessioModel.Product_SupplierCountry" FromRole="SupplierCountry" ToRole="Product" />
+          <Property Name="TItle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.Product_SupplierCountry" FromRole="SupplierCountry" ToRole="Product" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Patronymic" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
           <Property Name="GenderID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Gender" Relationship="SessioModel.FK_User_Gender" FromRole="User" ToRole="Gender" />
-          <NavigationProperty Name="Order" Relationship="SessioModel.FK_Order_User" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="Order1" Relationship="SessioModel.FK_Order_User1" FromRole="User" ToRole="Order" />
-          <NavigationProperty Name="Role" Relationship="SessioModel.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_User_Gender" FromRole="User" ToRole="Gender" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Order1" Relationship="Self.FK_Order_User1" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_User_Gender">
-          <End Type="SessioModel.Gender" Role="Gender" Multiplicity="1" />
-          <End Type="SessioModel.User" Role="User" Multiplicity="*" />
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gender">
               <PropertyRef Name="ID" />
@@ -489,8 +435,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Product_MeasureUnit">
-          <End Type="SessioModel.MeasureUnit" Role="MeasureUnit" Multiplicity="1" />
-          <End Type="SessioModel.Product" Role="Product" Multiplicity="*" />
+          <End Role="MeasureUnit" Type="Self.MeasureUnit" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MeasureUnit">
               <PropertyRef Name="ID" />
@@ -501,8 +447,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_OrderStatus">
-          <End Type="SessioModel.OrderStatus" Role="OrderStatus" Multiplicity="1" />
-          <End Type="SessioModel.Order" Role="Order" Multiplicity="*" />
+          <End Role="OrderStatus" Type="Self.OrderStatus" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderStatus">
               <PropertyRef Name="ID" />
@@ -513,8 +459,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Product_Order">
-          <End Type="SessioModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="SessioModel.Order_Product" Role="Order_Product" Multiplicity="*" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="ID" />
@@ -525,8 +471,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_User">
-          <End Type="SessioModel.User" Role="User" Multiplicity="1" />
-          <End Type="SessioModel.Order" Role="Order" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
@@ -537,8 +483,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_User1">
-          <End Type="SessioModel.User" Role="User" Multiplicity="1" />
-          <End Type="SessioModel.Order" Role="Order" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
@@ -549,8 +495,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ProductsReceipt_Order">
-          <End Type="SessioModel.Order" Role="Order" Multiplicity="1" />
-          <End Type="SessioModel.ProductsReceipt" Role="ProductsReceipt" Multiplicity="*" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="ProductsReceipt" Type="Self.ProductsReceipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Order">
               <PropertyRef Name="ID" />
@@ -561,8 +507,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Product_Product">
-          <End Type="SessioModel.Product" Role="Product" Multiplicity="1" />
-          <End Type="SessioModel.Order_Product" Role="Order_Product" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ID" />
@@ -573,8 +519,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Role">
-          <End Type="SessioModel.Role" Role="Role" Multiplicity="1" />
-          <End Type="SessioModel.User" Role="User" Multiplicity="*" />
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
               <PropertyRef Name="ID" />
@@ -585,129 +531,181 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Product_SupplierCountry">
-          <End Type="SessioModel.Product" Role="Product" Multiplicity="*" />
-          <End Type="SessioModel.SupplierCountry" Role="SupplierCountry" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <End Role="SupplierCountry" Type="Self.SupplierCountry" Multiplicity="*" />
         </Association>
-        </Schema>
+        <EntityContainer Name="Sessio1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="MeasureUnit" EntityType="Self.MeasureUnit" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Order_Product" EntityType="Self.Order_Product" />
+          <EntitySet Name="OrderStatus" EntityType="Self.OrderStatus" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="ProductsReceipt" EntityType="Self.ProductsReceipt" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+          <EntitySet Name="SupplierCountry" EntityType="Self.SupplierCountry" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_MeasureUnit" Association="Self.FK_Product_MeasureUnit">
+            <End Role="MeasureUnit" EntitySet="MeasureUnit" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+            <End Role="OrderStatus" EntitySet="OrderStatus" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product_Order" Association="Self.FK_Order_Product_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_Product" EntitySet="Order_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User1" Association="Self.FK_Order_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductsReceipt_Order" Association="Self.FK_ProductsReceipt_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ProductsReceipt" EntitySet="ProductsReceipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Product_Product" Association="Self.FK_Order_Product_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Order_Product" EntitySet="Order_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="Product_SupplierCountry" Association="Self.Product_SupplierCountry">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="SupplierCountry" EntitySet="SupplierCountry" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище SessioModelContainer" CdmEntityContainer="SessioEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SessioModelContainer" CdmEntityContainer="Sessio1Entities">
           <EntitySetMapping Name="Gender">
             <EntityTypeMapping TypeName="SessioModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MeasureUnit">
             <EntityTypeMapping TypeName="SessioModel.MeasureUnit">
               <MappingFragment StoreEntitySet="MeasureUnit">
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
             <EntityTypeMapping TypeName="SessioModel.Order">
               <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
-                <ScalarProperty Name="UserExecutorID" ColumnName="UserExecutorID" />
-                <ScalarProperty Name="UserCustomerID" ColumnName="UserCustomerID" />
-                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="UserCustomerID" ColumnName="UserCustomerID" />
+                <ScalarProperty Name="UserExecutorID" ColumnName="UserExecutorID" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order_Product">
             <EntityTypeMapping TypeName="SessioModel.Order_Product">
               <MappingFragment StoreEntitySet="Order_Product">
-                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PurchasePrice" ColumnName="PurchasePrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderStatus">
             <EntityTypeMapping TypeName="SessioModel.OrderStatus">
               <MappingFragment StoreEntitySet="OrderStatus">
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="SessioModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="SupplierCountryID" ColumnName="SupplierCountryID" />
-                <ScalarProperty Name="MeasureUnitID" ColumnName="MeasureUnitID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="AdditionDateTime" ColumnName="AdditionDateTime" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AdditionDateTime" ColumnName="AdditionDateTime" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="MeasureUnitID" ColumnName="MeasureUnitID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductsReceipt">
             <EntityTypeMapping TypeName="SessioModel.ProductsReceipt">
               <MappingFragment StoreEntitySet="ProductsReceipt">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="SessioModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Supplier">
             <EntityTypeMapping TypeName="SessioModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierCountry">
             <EntityTypeMapping TypeName="SessioModel.SupplierCountry">
               <MappingFragment StoreEntitySet="SupplierCountry">
-                <ScalarProperty Name="TItle" ColumnName="TItle" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TItle" ColumnName="TItle" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="SessioModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="Product_SupplierCountry" TypeName="SessioModel.Product_SupplierCountry" StoreEntitySet="Product_SupplierCountry">
-            <EndProperty Name="SupplierCountry">
-              <ScalarProperty Name="ID" ColumnName="SupplierCountryID" />
-            </EndProperty>
             <EndProperty Name="Product">
               <ScalarProperty Name="ID" ColumnName="ProductID" />
+            </EndProperty>
+            <EndProperty Name="SupplierCountry">
+              <ScalarProperty Name="ID" ColumnName="SupplierCountryID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
