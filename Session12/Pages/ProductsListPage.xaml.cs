@@ -26,7 +26,18 @@ namespace Session12.Pages
 
         public ICollectionView Products { get; set; }
 
-        public int NumberPages { get; set ; }
+        #endregion
+
+        #region Dependency Propertys
+
+        public int CountProduct
+        {
+            get { return (int)GetValue(CountProductProperty); }
+            set { SetValue(CountProductProperty, value); }
+        }
+
+        public static readonly DependencyProperty CountProductProperty =
+            DependencyProperty.Register("CountProduct", typeof(int), typeof(ProductsListPage));
 
         #endregion
 
@@ -37,7 +48,16 @@ namespace Session12.Pages
 
             InitializeComponent();
 
-            #region Поиск
+            SearchList();
+            FilterList();
+
+            CountProduct = Products.Cast<object>().Count();
+        }
+
+        #region Поиск
+
+        private void SearchList() 
+        {
 
             NameDisSearchTb.TextChanged += (s, e) => Products.Refresh();
 
@@ -50,13 +70,43 @@ namespace Session12.Pages
                 if (product.Title.Contains(search) || product.Description.Contains(search))
                     return true;
 
+                CountProduct = Products.Cast<object>().Count();
                 return false;
             };
-            #endregion
-
-            NumberPages = Products.Cast<object>().Count();
-
-
         }
+
+        #endregion
+
+        #region Фильтор
+
+        private void FilterList()
+        {
+            SortProduct.SelectionChanged += (s, e) =>
+            {
+                var tag = (SortProduct.SelectedItem as ComboBoxItem).Tag;
+
+                switch (tag)
+                {
+                    case "AToZ":
+                        Products.SortDescriptions.Clear();
+                        Products.SortDescriptions.Add(new SortDescription
+                        {
+                            PropertyName = "Title",
+                            Direction = ListSortDirection.Ascending,
+                        });
+                        break;
+                    case "ZtoA":
+                        Products.SortDescriptions.Clear();
+                        Products.SortDescriptions.Add(new SortDescription
+                        {
+                            PropertyName = "Title",
+                            Direction = ListSortDirection.Descending,
+                        });
+                        break;
+                }
+            };
+        }
+
+        #endregion
     }
 }

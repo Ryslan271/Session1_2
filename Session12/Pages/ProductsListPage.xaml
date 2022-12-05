@@ -155,7 +155,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <TextBlock Text="{Binding Path=NumberPages}"/>
+        <TextBlock Text="{Binding Path=CountProduct}"/>
 
         <StackPanel
             Orientation="Horizontal"
