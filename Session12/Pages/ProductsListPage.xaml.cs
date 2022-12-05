@@ -26,6 +26,8 @@ namespace Session12.Pages
 
         public ICollectionView Products { get; set; }
 
+        public int NumberPages { get; set ; }
+
         #endregion
 
         public ProductsListPage()
@@ -51,6 +53,10 @@ namespace Session12.Pages
                 return false;
             };
             #endregion
+
+            NumberPages = Products.Cast<object>().Count();
+
+
         }
     }
 }
