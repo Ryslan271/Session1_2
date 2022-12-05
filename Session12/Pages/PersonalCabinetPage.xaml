@@ -33,40 +33,66 @@
             HorizontalAlignment="Center"
             Style="{StaticResource ResourceKey=PersenCabinetStackpanel}">
             <TextBlock Text="Имя: "
-                        Margin="0 0 10 0"/>
+                     Margin="0 0 10 0"/>
             <TextBox x:Name="LastName" 
-                        MinWidth="300"
-                        Text="{Binding Path=user.LastName}"/>
+                     MinWidth="300"
+                     Text="{Binding Path=user.LastName}"
+                     Margin="0 0 0 10"
+                     FontSize="15" TextChanged="LastName_TextChanged"/>
+            
             <TextBlock Text="Фамилия: "
-                        Margin="0 0 10 0"/>
+                     Margin="0 0 10 0"/>
             <TextBox x:Name="FirstName"
-                    MinWidth="300"
-                    Text="{Binding Path=user.FirstName}"/>
+                     MinWidth="300"
+                     Text="{Binding Path=user.FirstName}"
+                     Margin="0 0 0 10"
+                     FontSize="15" TextChanged="FirstName_TextChanged"/>
+            
             <TextBlock Text="Отчество: "
-                    Margin="0 0 10 0"/>
+                     Margin="0 0 10 0"/>
             <TextBox x:Name="Patronymic"
-                MinWidth="300"
-                Text="{Binding Path=user.Patronymic}"/>
+                     MinWidth="300"
+                     Text="{Binding Path=user.Patronymic}"
+                     Margin="0 0 0 10"
+                     FontSize="15" TextChanged="Patronymic_TextChanged"/>
+            
             <TextBlock Text="Телефон: "
-                    Margin="0 0 10 0"/>
+                     Margin="0 0 10 0"/>
             <TextBox x:Name="PhoneNumber"
-                MinWidth="300"
-                Text="{Binding Path=user.PhoneNumber}"/>
+                     MinWidth="300"
+                     Text="{Binding Path=user.PhoneNumber}"
+                     Margin="0 0 0 10"
+                     FontSize="15" TextChanged="PhoneNumber_TextChanged"/>
+            
             <TextBlock Text="Адрес электронной почты: "
-                    Margin="0 0 10 0"/>
+                     Margin="0 0 10 0"/>
             <TextBox x:Name="Email"
-                MinWidth="300"
-                Text="{Binding Path=user.Email}"/>
+                     MinWidth="300"
+                     Text="{Binding Path=user.Email}"
+                     Margin="0 0 0 10"
+                     FontSize="15" TextChanged="Email_TextChanged"/>
+            
             <TextBlock Text="Логин: "
-                Margin="0 0 10 0"/>
+                     Margin="0 0 10 0"/>
             <TextBox x:Name="LoginBox"
-                MinWidth="300"
-                Text="{Binding Path=user.Login}"/>
+                     MinWidth="300"
+                     Text="{Binding Path=user.Login}"
+                     Margin="0 0 0 10"
+                     FontSize="15" TextChanged="LoginBox_TextChanged"/>
+            
             <TextBlock Text="Пароль: "
-                Margin="0 0 10 0"/>
+                     Margin="0 0 10 0"/>
             <TextBox x:Name="PasswordBox"
-                    MinWidth="300"
-                    Text="{Binding Path=user.Password}"/>
+                     MinWidth="300"
+                     Text="{Binding Path=user.Password}"
+                     Margin="0 0 0 10"
+                     FontSize="15" TextChanged="PasswordBox_TextChanged"/>
+            
         </StackPanel>
+
+        <Button
+            x:Name="EditUserInformationButton"
+            Content="Сохранить"
+            Click="EditUserInformation"/>
     </Grid>
 </Page>

@@ -26,5 +26,45 @@ namespace Session12.Pages
             user = App.User;
             InitializeComponent();
         }
+
+        private void LastName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditUserInformationButton.Visibility = Visibility.Visible;
+        }
+
+        private void FirstName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditUserInformationButton.Visibility = Visibility.Visible;
+        }
+
+        private void Patronymic_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditUserInformationButton.Visibility = Visibility.Visible;
+        }
+
+        private void PhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditUserInformationButton.Visibility = Visibility.Visible;
+        }
+
+        private void Email_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditUserInformationButton.Visibility = Visibility.Visible;
+        }
+
+        private void LoginBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditUserInformationButton.Visibility = Visibility.Visible;
+        }
+
+        private void PasswordBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            EditUserInformationButton.Visibility = Visibility.Visible;
+        }
+
+        private void EditUserInformation(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
