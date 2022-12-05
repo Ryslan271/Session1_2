@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Session12"
         mc:Ignorable="d"
         Icon="Recourse/icon-Logo.png"
-        Title="Доставка" Height="450" Width="800">
+        Title="Доставка" 
+        Height="550" 
+        Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="12*"/>
@@ -20,64 +22,71 @@
         <StackPanel
             Grid.Column="0"
             Grid.Row="1">
-            <Button 
+            <RadioButton 
                 Style="{StaticResource MenuButton}"
-                Click="OpenMainList">
-                <Button.Content>
+                Click="OpenMainList"
+                x:Name="ParsonCabinet">
+                <RadioButton.Content>
                     <Image
                         Source="Recourse/icon_main.png"
                         Margin="5 0 0 0"/>
-                </Button.Content>
-            </Button>   
-            <Button 
+                </RadioButton.Content>
+            </RadioButton>
+            
+            <RadioButton 
                 Style="{StaticResource MenuButton}"
                 Click="OpenProductList">
-                <Button.Content>
+                <RadioButton.Content>
                     <Image
                         Source="Recourse/icon_product.png"
                         Margin="5 0 0 0"/>
-                </Button.Content>
-            </Button>
-            <Button 
+                </RadioButton.Content>
+            </RadioButton>
+            
+            <RadioButton 
                 Style="{StaticResource MenuButton}"
                 Click="OpenPostavchikList">
-                <Button.Content>
+                <RadioButton.Content>
                     <Image
                         Source="Recourse/icon_postavchik.png"
                         Margin="5 0 0 0"/>
-                </Button.Content>
-            </Button>
-            <Button 
+                </RadioButton.Content>
+            </RadioButton>
+            
+            <RadioButton 
                 Style="{StaticResource MenuButton}"
                 Click="OpenOrdersList">
-                <Button.Content>
+                <RadioButton.Content>
                     <Image
                         Source="Recourse/icon_orders.png"
                         Margin="5 0 0 0"/>
-                </Button.Content>
-            </Button>
-            <Button 
+                </RadioButton.Content>
+            </RadioButton>
+            
+            <RadioButton 
                 Style="{StaticResource MenuButton}"
                 Click="OpenGoinYourHouseList">
-                <Button.Content>
+                <RadioButton.Content>
                     <Image
                         Source="Recourse/icon_goinyourhouse.png"
                         Margin="5 0 0 0"/>
-                </Button.Content>
-            </Button>
-            <Button 
+                </RadioButton.Content>
+            </RadioButton>
+            
+            <RadioButton 
                 Style="{StaticResource MenuButton}"
                 Click="ButtonClickExit">
-                <Button.Content>
+                <RadioButton.Content>
                     <Image
                         Source="Recourse/icon_exit.png"
                         Margin="5 0 0 0"/>
-                </Button.Content>
-            </Button>
+                </RadioButton.Content>
+            </RadioButton>
         </StackPanel>
 
         <Frame
             x:Name="MainFrame"
+            ScrollViewer.VerticalScrollBarVisibility="Visible"
             NavigationUIVisibility="Hidden"
             Grid.Column="1"
             Margin="5"

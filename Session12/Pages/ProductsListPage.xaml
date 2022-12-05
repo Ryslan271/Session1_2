@@ -8,8 +8,16 @@
       DataContext="{Binding RelativeSource={RelativeSource Self}}"
       Title="ProductsListPage">
 
-    <StackPanel>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
         <StackPanel
+            Grid.Row="0"
             Orientation="Horizontal"
             Style="{StaticResource ResourceKey=StyleStackPanelProductSortFilterSeacher}"
             Margin="0 0 0 15">
@@ -29,7 +37,7 @@
                         Tag="ZtoA"
                         Content="От Я до А"/>
                     <ComboBoxItem
-                        Tag="DateAccording "
+                        Tag="DateAscending"
                         Content="Дата по возрастанию"/>
                     <ComboBoxItem
                         Tag="DateDescending"
@@ -44,7 +52,14 @@
                     Margin="0 0 0 5"/>
                 <ComboBox
                     x:Name="FilterProduct"
-                    SelectedIndex="0"/>
+                    ItemsSource="{Binding MeasureUnits}"
+                    SelectedIndex="0">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <ComboBoxItem Tag="{Binding Title}" Content="{Binding Title}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             <StackPanel
                 Orientation="Vertical">
@@ -57,118 +72,136 @@
             </StackPanel>
         </StackPanel>
 
-        <ListView
-            ItemsSource="{Binding Products}"
-            d:ItemsSource="{d:SampleData ItemCount=2}"
-            BorderBrush="Black">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ListBoxItem">
-                                <Border BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
-                                    <ContentPresenter/>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger
-                                        Property="IsMouseOver"
-                                        Value="True">
-                                        <Setter
-                                            Property="Background"
-                                            Value="Aqua"/>
-                                        <Setter
-                                            Property="BorderBrush"
-                                            Value="#83CC16" />
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Border
-                        BorderBrush="Black"
-                        BorderThickness=" 0 0 0 2"
-                        Padding="10">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-
-                            <Border
-                                Width="100"
-                                Height="100"
-                                Margin="0 0 10 0"
-                                Grid.Column="0"
-                                Grid.RowSpan="3"
-                                BorderBrush="Black"
-                                BorderThickness="2"
-                                VerticalAlignment="Center">
-                                <Image
-                                    Width="100"
-                                    Height="100">
-                                    <Image.Source>
-                                        <Binding
-                                            Path="Photo">
-                                            <Binding.TargetNullValue>
-                                                <BitmapImage UriSource="/Recourse/NetPhotoProduct.jpg"/>
-                                            </Binding.TargetNullValue>
-                                        </Binding>
-                                    </Image.Source>
-                                </Image>
-                            </Border>
-
-                            <TextBlock
-                                Grid.Column="1"
-                                Grid.Row="0">
-                                <TextBlock.Text>
-                                    <MultiBinding
-                                        StringFormat="{}{0} за {1}">
-                                        <Binding
-                                            Path="Title"/>
-                                        <Binding
-                                            Path="AdditionDateTime"/>
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
-                            <TextBlock
-                                Text="{Binding Path=Description}"
-                                Grid.Column="1"
-                                Grid.Row="1"/>
-                            <TextBlock
-                                Text="{Binding Path=Cost}"
-                                Grid.Column="1"
-                                Grid.Row="3"/>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <TextBlock Text="{Binding Path=CountProduct}"/>
-
-        <StackPanel
-            Orientation="Horizontal"
-            HorizontalAlignment="Right">
-            <Button Content="&lt;"/>
-            <ListBox>
-                <ListBox.ItemTemplate>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1">
+            <ListView
+                ItemsSource="{Binding Products}"
+                d:ItemsSource="{d:SampleData ItemCount=2}"
+                BorderBrush="Black">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                            Background="{TemplateBinding Background}">
+                                        <ContentPresenter/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger
+                                            Property="IsMouseOver"
+                                            Value="True">
+                                            <Setter
+                                                Property="Background"
+                                                Value="Aqua"/>
+                                            <Setter
+                                                Property="BorderBrush"
+                                                Value="#83CC16" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Button />
+                        <Border
+                            BorderBrush="Black"
+                            BorderThickness=" 0 0 0 2"
+                            Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <Border
+                                    Width="100"
+                                    Height="100"
+                                    Margin="0 0 10 0"
+                                    Grid.Column="0"
+                                    Grid.RowSpan="3"
+                                    BorderBrush="Black"
+                                    BorderThickness="2"
+                                    VerticalAlignment="Center">
+                                    <Image
+                                        Width="100"
+                                        Height="100">
+                                        <Image.Source>
+                                            <Binding
+                                                Path="Photo">
+                                                <Binding.TargetNullValue>
+                                                    <BitmapImage UriSource="/Recourse/NetPhotoProduct.jpg"/>
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                    </Image>
+                                </Border>
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Grid.Row="0">
+                                    <TextBlock.Text>
+                                        <MultiBinding
+                                            StringFormat="{}{0} за {1}">
+                                            <Binding
+                                                Path="Title"/>
+                                            <Binding
+                                                Path="AdditionDateTime"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+
+                                <TextBlock
+                                    Text="{Binding Path=Description}"
+                                    Grid.Column="1"
+                                    Grid.Row="1"/>
+
+                                <TextBlock
+                                    Text="{Binding Path=AdditionDateTime}"
+                                    Grid.Row="3"
+                                    Grid.Column="1"/>
+
+                                <TextBlock
+                                    Text="{Binding Path=Cost}"
+                                    Grid.Row="3"
+                                    Grid.Column="2"
+                                    Margin="0 0 10 0"/>
+
+                                <TextBlock
+                                    Text="{Binding Path=MeasureUnit.Title}"
+                                    Grid.Row="3"
+                                    Grid.Column="4"/>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            <Button Content="&gt;"/>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="{Binding Path=CountProduct}" Margin="0 0 20 0"/>
+
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Right">
+                <Button Content="&lt;"/>
+                <ListBox>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button Content="&gt;"/>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </Page>

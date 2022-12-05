@@ -33,6 +33,8 @@ namespace Session12
         public MainWindow()
         {
             InitializeComponent();
+            ParsonCabinet.IsChecked = true;
+            MainFrame.Navigate(new Pages.PersonalCabinetPage());
         }
 
         #region Обработчики
@@ -40,10 +42,15 @@ namespace Session12
 
         private void OpenMainList(object sender, RoutedEventArgs e)
         {
-
+            (sender as RadioButton).IsChecked = true;
+            MainFrame.Navigate(new Pages.PersonalCabinetPage());
         }
 
-        private void OpenProductList(object sender, RoutedEventArgs e) => MainFrame.Navigate(new Pages.ProductsListPage());
+        private void OpenProductList(object sender, RoutedEventArgs e)
+        {
+            (sender as RadioButton).IsChecked = true;
+            MainFrame.Navigate(new Pages.ProductsListPage());
+        }
 
         private void OpenPostavchikList(object sender, RoutedEventArgs e)
         {

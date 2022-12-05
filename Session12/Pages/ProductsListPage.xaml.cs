@@ -26,6 +26,8 @@ namespace Session12.Pages
 
         public ICollectionView Products { get; set; }
 
+        public ObservableCollection<MeasureUnit> MeasureUnits { get; set; }
+
         #endregion
 
         #region Dependency Propertys
@@ -46,43 +48,38 @@ namespace Session12.Pages
 
             Products = new CollectionViewSource { Source = App.db.Product.Local }.View;
 
+            MeasureUnits = new ObservableCollection<MeasureUnit> (App.db.MeasureUnit.Local);
+            MeasureUnits.Insert(0, new MeasureUnit() { Title = "Все" });
+           
             InitializeComponent();
 
-            SearchList();
-            FilterList();
-
-            CountProduct = Products.Cast<object>().Count();
-        }
-
-        #region Поиск
-
-        private void SearchList() 
-        {
-
+            FilterProduct.SelectionChanged += (s, e) => Products.Refresh();
             NameDisSearchTb.TextChanged += (s, e) => Products.Refresh();
 
             Products.Filter += (obj) =>
             {
                 var product = obj as Product;
 
+                var tag = (FilterProduct.SelectedItem as MeasureUnit).Title;
+
+                if (FilterProduct.SelectedIndex != 0)
+                    if (product.MeasureUnit.Title != tag)
+                        return false;
+
                 var search = NameDisSearchTb.Text;
 
-                if (product.Title.Contains(search) || product.Description.Contains(search))
-                    return true;
+                if (product.Title.Contains(search) == false &&
+                    product.Description.Contains(search) == false)
+                    return false;
 
-                CountProduct = Products.Cast<object>().Count();
-                return false;
+                return true;
             };
-        }
 
-        #endregion
-
-        #region Фильтор
-
-        private void FilterList()
-        {
             SortProduct.SelectionChanged += (s, e) =>
             {
+                if ((SortProduct.SelectedItem as ComboBoxItem) == null)
+                    return;
+
                 var tag = (SortProduct.SelectedItem as ComboBoxItem).Tag;
 
                 switch (tag)
@@ -92,21 +89,46 @@ namespace Session12.Pages
                         Products.SortDescriptions.Add(new SortDescription
                         {
                             PropertyName = "Title",
-                            Direction = ListSortDirection.Ascending,
+                            Direction = ListSortDirection.Ascending
                         });
+                        Products.Refresh();
                         break;
+
                     case "ZtoA":
                         Products.SortDescriptions.Clear();
                         Products.SortDescriptions.Add(new SortDescription
                         {
                             PropertyName = "Title",
-                            Direction = ListSortDirection.Descending,
+                            Direction = ListSortDirection.Descending
                         });
+                        Products.Refresh();
+                        break;
+
+                    case "DateAscending":
+                        Products.SortDescriptions.Clear();
+                        Products.SortDescriptions.Add(new SortDescription
+                        {
+                            PropertyName = "AdditionDateTime",
+                            Direction = ListSortDirection.Ascending
+                        });
+                        Products.Refresh();
+                        break;
+
+                    case "DateDescending":
+                        Products.SortDescriptions.Clear();
+                        Products.SortDescriptions.Add(new SortDescription
+                        {
+                            PropertyName = "AdditionDateTime",
+                            Direction = ListSortDirection.Descending
+                        });
+                        Products.Refresh();
                         break;
                 }
             };
-        }
 
-        #endregion
+
+            CountProduct = Products.Cast<object>().Count();
+
+        }
     }
 }

@@ -85,6 +85,9 @@
     <Compile Include="Order_Product.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PersonalCabinetPage.xaml.cs">
+      <DependentUpon>PersonalCabinetPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProductsListPage.xaml.cs">
       <DependentUpon>ProductsListPage.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PersonalCabinetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProductsListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Recourse\NetPhotoProduct.jpg" />
+    <Resource Include="Recourse\PersonPhoto.jpg" />
     <Content Include="Sessio.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Sessio.edmx</DependentUpon>
