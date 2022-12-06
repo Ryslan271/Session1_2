@@ -45,8 +45,7 @@ namespace Session12.Pages
 
         public ProductsListPage()
         {
-
-            Products = new CollectionViewSource { Source = App.db.Product.Local }.View;
+            Page();
 
             MeasureUnits = App.db.MeasureUnit.Local;
             MeasureUnits.Insert(0, new MeasureUnit() { Title = "Все" });
@@ -134,16 +133,20 @@ namespace Session12.Pages
 
             #endregion
 
-
         }
 
         private int NumberPage = 1;
+        private int TotalPages = 0;
         private int CountProductOnPage = 2;
 
         private void Page()
         {
-            Products.Cast<Product>().Skip((NumberPage - 1) * CountProductOnPage)
-                           .Take(CountProductOnPage);
+            Products = new CollectionViewSource { Source = App.db.Product.Local.Skip((NumberPage - 1) * CountProductOnPage)
+                           .Take(CountProductOnPage)}.View;
+
+            Products.Refresh();
+
+            TotalPages = App.db.Product.Local.Count() / CountProductOnPage;
         }
 
         private void ButtonClickLeftPage(object sender, RoutedEventArgs e)
@@ -152,11 +155,18 @@ namespace Session12.Pages
                 return;
 
             NumberPage--;
+
+            Page();
         }
 
         private void ButtonClickRightPage(object sender, RoutedEventArgs e)
         {
+            if (TotalPages <= NumberPage)
+                return;
 
+            NumberPage++;
+
+            Page();
         }
     }
 }

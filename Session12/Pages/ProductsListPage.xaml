@@ -219,7 +219,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Content="&gt;" Click="Button_Click"/>
+                <Button Content="&gt;" Click="ButtonClickRightPage"/>
             </StackPanel>
         </StackPanel>
     </Grid>
