@@ -33,6 +33,46 @@
         </Style>
         <!--#endregion-->
 
+        <!--#region Стиль для StackPanel в добавлении и редактировании -->
+        <Style x:Key="StyleStackPanelInEditProduct"
+               TargetType="StackPanel">
+            <Setter
+                Property="HorizontalAlignment"
+                Value="Center"/>
+            <Setter
+                Property="VerticalAlignment"
+                Value="Top"/>
+            <Setter
+                Property="Margin"
+                Value="0 10 0 0"/>
+            <Setter
+                Property="TextBlock.Foreground"
+                Value="#FF2B2B2B"/>
+            <Setter
+                Property="TextBlock.TextAlignment"
+                Value="Center"/>
+            <Setter
+                Property="TextBlock.FontSize"
+                Value="18"/>
+            <Setter 
+                Property="TextBlock.FontWeight"
+                Value="DemiBold"/>
+            <Setter 
+                Property="TextBlock.FontFamily"
+                Value="Bahnschrift SemiBold"/>
+        </Style>
+        <!--#endregion-->
+
+        <!--#region Стиль для TextBox в добавлении и редактировании-->
+        <Style x:Key="StyleTextBox"
+               TargetType="TextBox">
+            <Setter Property="Background"
+                    Value="Transparent"/>
+            <Setter Property="BorderBrush"
+                    Value="Transparent"/>
+        </Style>
+        <!--#endregion-->
+
         <!--#region Стиль для фильтрации, сортировки и поиска в списке продуктов -->
         <Style x:Key="StyleStackPanelProductSortFilterSeacher"
                TargetType="StackPanel">

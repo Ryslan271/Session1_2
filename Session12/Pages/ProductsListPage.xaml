@@ -18,6 +18,7 @@
         <StackPanel
             Grid.Row="0"
             Orientation="Horizontal"
+            VerticalAlignment="Center"
             Style="{StaticResource ResourceKey=StyleStackPanelProductSortFilterSeacher}"
             Margin="0 0 0 15">
             <StackPanel
@@ -61,18 +62,40 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel
+                 Margin="0 0 15 0"
                 Orientation="Vertical">
                 <TextBlock
                     Text="Название или описание"
                     Margin="0 0 0 5"/>
                 <TextBox
+                    MinHeight="23"
                     MinWidth="150"
                     x:Name="NameDisSearchTb"/>
+            </StackPanel>
+            <StackPanel
+                 Margin="0 0 10 0">
+                <TextBlock
+                    Text="Количество элементов"
+                    Width="150"
+                    Margin="0 0 0 5"
+                    TextWrapping="Wrap"/>
+                <ComboBox
+                    x:Name="NumberProductInList"
+                    VerticalAlignment="Bottom"
+                    SelectionChanged="ComboBox_SelectionChanged"
+                    SelectedIndex="0">
+                    <ComboBoxItem Content="2" Tag="2"/>
+                    <ComboBoxItem Content="3" Tag="3"/>
+                    <ComboBoxItem Content="10" Tag="10"/>
+                    <ComboBoxItem Content="50" Tag="50"/>
+                    <ComboBoxItem Content="200" Tag="200"/>
+                </ComboBox>
             </StackPanel>
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1">
             <ListView
+                x:Name="ProductList"
                 ItemsSource="{Binding Products}"
                 d:ItemsSource="{d:SampleData ItemCount=2}"
                 BorderBrush="Black">
@@ -91,10 +114,20 @@
                                             Value="True">
                                             <Setter
                                                 Property="Background"
-                                                Value="Aqua"/>
+                                                Value="#e5e5e5"/>
                                             <Setter
                                                 Property="BorderBrush"
-                                                Value="#83CC16" />
+                                                Value="#e5e5e5" />
+                                        </Trigger>
+                                        <Trigger
+                                            Property="IsSelected"
+                                            Value="True">
+                                            <Setter
+                                                Property="Background"
+                                                Value="#8d99ae"/>
+                                            <Setter
+                                                Property="BorderBrush"
+                                                Value="#edf2f4" />
                                         </Trigger>
                                     </ControlTemplate.Triggers>
                                 </ControlTemplate>
@@ -145,12 +178,18 @@
                                     </Image>
                                 </Border>
 
-                                <TextBlock
+                                <TextBlock 
+                                    Text="{Binding ID, StringFormat='{}Номер: {0}'}"
                                     Grid.Column="1"
+                                    Grid.Row="0"
+                                    Margin="0 0 10 0"/>
+
+                                <TextBlock
+                                    Grid.Column="2"
                                     Grid.Row="0">
                                     <TextBlock.Text>
                                         <MultiBinding
-                                            StringFormat="{}{0} {1} {2}">
+                                            StringFormat="{}Название:  {0} {1} {2}">
                                             <Binding
                                                 Path="Title"/>
                                             <Binding
@@ -162,7 +201,8 @@
                                 </TextBlock>
 
                                 <TextBlock
-                                    Text="{Binding Path=Description}"
+                                    Text="{Binding Path=Description, StringFormat='{}Описание продукта: {0}'}"
+                                    TextWrapping="Wrap"
                                     Grid.Column="1"
                                     Grid.Row="1"/>
 
@@ -181,7 +221,7 @@
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
                                     Grid.Row="3"
-                                    ItemsSource="{Binding SupplierCountry}">
+                                    ItemsSource="{Binding Path=SupplierCountry}">
                                     <ListBox.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <WrapPanel IsItemsHost="True"/>
@@ -205,21 +245,48 @@
             </ListView>
         </ScrollViewer>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <TextBlock Text="{Binding Path=CountProduct}" Margin="0 0 20 0"/>
+        <StackPanel
+            HorizontalAlignment="Right"
+            Grid.Row="2"
+            Orientation="Horizontal">
 
+            <TextBlock 
+                VerticalAlignment="Center"
+                Text="{Binding Path=CountProductOnPage,
+                StringFormat='{}Количество продуктов на странице: {0}'}"
+                Margin="0 0 20 0"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Button 
+                    Padding="5"
+                    Content="Добавить"
+                    Margin="10"/>
+                <Button 
+                    Padding="5"
+                    Content="Редактировать"
+                    Margin="10" Click="Button_Click"/>
+            </StackPanel>
+            
             <StackPanel
                 Orientation="Horizontal"
-                HorizontalAlignment="Right">
-                <Button Content="&lt;" Click="ButtonClickLeftPage"/>
-                <ListBox>
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Button />
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <Button Content="&gt;" Click="ButtonClickRightPage"/>
+                HorizontalAlignment="Right"
+                Margin="0 0 20 0">
+                <Button 
+                    Content="&lt;"
+                    Height="35"
+                    Width="20"
+                    FontSize="18"
+                    Click="ButtonClickLeftPage"/>
+                <TextBlock 
+                    Text="{Binding Path=NumberPage}"
+                    Margin="10"
+                    FontSize="18"/>
+                <Button 
+                    Content="&gt;" 
+                    Height="35"
+                    Width="20"
+                    FontSize="18"
+                    Click="ButtonClickRightPage"/>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -18,10 +18,13 @@ namespace Session12.Pages
     /// <summary>
     /// Логика взаимодействия для AddAndEditProductPage.xaml
     /// </summary>
-    public partial class AddAndEditProductPage : Page
+    public partial class AddAndEditProductPage : Window
     {
-        public AddAndEditProductPage()
+        public Product ProductEditing { get; set; }
+
+        public AddAndEditProductPage(Product product)
         {
+            ProductEditing = product;
             InitializeComponent();
         }
     }
