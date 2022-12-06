@@ -211,7 +211,7 @@
             <StackPanel
                 Orientation="Horizontal"
                 HorizontalAlignment="Right">
-                <Button Content="&lt;"/>
+                <Button Content="&lt;" Click="ButtonClickLeftPage"/>
                 <ListBox>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -219,7 +219,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                <Button Content="&gt;"/>
+                <Button Content="&gt;" Click="Button_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

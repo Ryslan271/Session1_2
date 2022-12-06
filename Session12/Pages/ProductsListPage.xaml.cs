@@ -136,5 +136,27 @@ namespace Session12.Pages
 
 
         }
+
+        private int NumberPage = 1;
+        private int CountProductOnPage = 2;
+
+        private void Page()
+        {
+            Products.Cast<Product>().Skip((NumberPage - 1) * CountProductOnPage)
+                           .Take(CountProductOnPage);
+        }
+
+        private void ButtonClickLeftPage(object sender, RoutedEventArgs e)
+        {
+            if ((NumberPage - 1) <= 0)
+                return;
+
+            NumberPage--;
+        }
+
+        private void ButtonClickRightPage(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
