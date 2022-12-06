@@ -26,7 +26,7 @@ namespace Session12.Pages
 
         public ICollectionView Products { get; set; }
 
-        public ObservableCollection<MeasureUnit> MeasureUnits { get; set; }
+        public IList<MeasureUnit> MeasureUnits { get; set; }
 
         #endregion
 
@@ -48,13 +48,15 @@ namespace Session12.Pages
 
             Products = new CollectionViewSource { Source = App.db.Product.Local }.View;
 
-            MeasureUnits = new ObservableCollection<MeasureUnit> (App.db.MeasureUnit.Local);
+            MeasureUnits = App.db.MeasureUnit.Local;
             MeasureUnits.Insert(0, new MeasureUnit() { Title = "Все" });
-           
+
             InitializeComponent();
 
             FilterProduct.SelectionChanged += (s, e) => Products.Refresh();
             NameDisSearchTb.TextChanged += (s, e) => Products.Refresh();
+
+            #region поиск + фильтрация
 
             Products.Filter += (obj) =>
             {
@@ -66,14 +68,18 @@ namespace Session12.Pages
                     if (product.MeasureUnit.Title != tag)
                         return false;
 
-                var search = NameDisSearchTb.Text;
+                var search = NameDisSearchTb.Text.ToLower().Trim();
 
-                if (product.Title.Contains(search) == false &&
-                    product.Description.Contains(search) == false)
+                if (product.Title.ToLower().Contains(search) == false &&
+                    product.Description.ToLower().Contains(search) == false)
                     return false;
 
                 return true;
             };
+
+            #endregion
+
+            #region Сортировка
 
             SortProduct.SelectionChanged += (s, e) =>
             {
@@ -126,8 +132,8 @@ namespace Session12.Pages
                 }
             };
 
+            #endregion
 
-            CountProduct = Products.Cast<object>().Count();
 
         }
     }

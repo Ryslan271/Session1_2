@@ -11,19 +11,20 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="41*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Border
             BorderThickness="4"
             CornerRadius="10"
             Width="200"
             Height="200"
-            BorderBrush="Black">
+            BorderBrush="Black" Margin="33,12,34,13">
             <Image Source="/Recourse/PersonPhoto.jpg"/>
         </Border>
 
@@ -31,68 +32,77 @@
             Grid.Column="1"
             Grid.RowSpan="2"
             HorizontalAlignment="Center"
-            Style="{StaticResource ResourceKey=PersenCabinetStackpanel}">
+            Style="{StaticResource ResourceKey=PersenCabinetStackpanel}" Margin="0,0,0,15">
             <TextBlock Text="Имя: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="LastName" 
                      MinWidth="300"
-                     Text="{Binding Path=user.LastName}"
+                     Text="{Binding Path=_user.LastName}"
                      Margin="0 0 0 10"
                      FontSize="15" TextChanged="LastName_TextChanged"/>
-            
+
             <TextBlock Text="Фамилия: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="FirstName"
                      MinWidth="300"
-                     Text="{Binding Path=user.FirstName}"
+                     Text="{Binding Path=_user.FirstName}"
                      Margin="0 0 0 10"
                      FontSize="15" TextChanged="FirstName_TextChanged"/>
-            
+
             <TextBlock Text="Отчество: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="Patronymic"
                      MinWidth="300"
-                     Text="{Binding Path=user.Patronymic}"
+                     Text="{Binding Path=_user.Patronymic}"
                      Margin="0 0 0 10"
                      FontSize="15" TextChanged="Patronymic_TextChanged"/>
-            
+
             <TextBlock Text="Телефон: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="PhoneNumber"
                      MinWidth="300"
-                     Text="{Binding Path=user.PhoneNumber}"
+                     Text="{Binding Path=_user.PhoneNumber}"
                      Margin="0 0 0 10"
                      FontSize="15" TextChanged="PhoneNumber_TextChanged"/>
-            
+
             <TextBlock Text="Адрес электронной почты: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="Email"
                      MinWidth="300"
-                     Text="{Binding Path=user.Email}"
+                     Text="{Binding Path=_user.Email}"
                      Margin="0 0 0 10"
                      FontSize="15" TextChanged="Email_TextChanged"/>
-            
+
             <TextBlock Text="Логин: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="LoginBox"
                      MinWidth="300"
-                     Text="{Binding Path=user.Login}"
+                     Text="{Binding Path=_user.Login}"
                      Margin="0 0 0 10"
                      FontSize="15" TextChanged="LoginBox_TextChanged"/>
-            
+
             <TextBlock Text="Пароль: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="PasswordBox"
                      MinWidth="300"
-                     Text="{Binding Path=user.Password}"
+                     Text="{Binding Path=_user.Password}"
                      Margin="0 0 0 10"
                      FontSize="15" TextChanged="PasswordBox_TextChanged"/>
-            
+
         </StackPanel>
+
+        <TextBlock x:Name="MessageInfo"
+                   Grid.Row="3"
+                   Margin="10 0 0 0"/>
 
         <Button
             x:Name="EditUserInformationButton"
+            Grid.Column="1"
+            Grid.Row="2"
+            Visibility="Hidden"
+            HorizontalAlignment="Right"
+            Padding="10 0 10 0"
             Content="Сохранить"
-            Click="EditUserInformation"/>
+            Click="EditUserInformation" Grid.RowSpan="2"/>
     </Grid>
 </Page>

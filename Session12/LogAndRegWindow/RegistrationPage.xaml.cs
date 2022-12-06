@@ -21,10 +21,7 @@ namespace Session12.Pages
     /// </summary>
     public partial class RegistrationPage : Window
     {
-        public RegistrationPage()
-        {
-            InitializeComponent();
-        }
+        public RegistrationPage() => InitializeComponent();
 
         private void ButtonRegistClick(object sender, RoutedEventArgs e)
         {
@@ -101,6 +98,5 @@ namespace Session12.Pages
             new LoginPage().Show();
             Close();
         }
-
     }
 }

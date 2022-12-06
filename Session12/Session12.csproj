@@ -85,12 +85,16 @@
     <Compile Include="Order_Product.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddAndEditProductPage.xaml.cs">
+      <DependentUpon>AddAndEditProductPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PersonalCabinetPage.xaml.cs">
       <DependentUpon>PersonalCabinetPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductsListPage.xaml.cs">
       <DependentUpon>ProductsListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PartialClasses\SupplierCountry.Extension.cs" />
     <Compile Include="Product.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
@@ -141,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LogAndRegWindow\RegistrationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddAndEditProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

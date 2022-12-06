@@ -25,22 +25,19 @@ namespace Session12.Pages
 
         private int countLog = 0;
 
-        DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
-
         #endregion
 
         public LoginPage() => InitializeComponent();
 
-        private async void Enter_Click(object sender, RoutedEventArgs e)
+        private void Enter_Click(object sender, RoutedEventArgs e)
         {
             if (LoginBox.Text.Trim() == "" || PasswordBox.Password.Trim() == "")
                 return;
 
             if (countLog >= 3)
             {
-                await Task.Run(() => TimerStart());
                 InfoMessage.Visibility = Visibility.Visible;
-                InfoMessage.Text = $"Войти можно будет только через {dispatcherTimer.Interval.Minutes}:{dispatcherTimer.Interval.Seconds}";
+                InfoMessage.Text = "Тут таймер по сути";
                 return;
             }
 
@@ -58,15 +55,6 @@ namespace Session12.Pages
             new MainWindow().Show();
             Hide();
         }
-
-        private void TimerStart()
-        {
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 1, 0);
-            dispatcherTimer.Start();
-        }
-
-        private void dispatcherTimer_Tick(object sender, EventArgs e) => countLog = 0;
 
         private void GoToRegistrationPage_Click(object sender, RoutedEventArgs e)
         {
