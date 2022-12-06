@@ -98,43 +98,8 @@
                 x:Name="ProductList"
                 ItemsSource="{Binding Products}"
                 d:ItemsSource="{d:SampleData ItemCount=2}"
-                BorderBrush="Black">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListBoxItem">
-                                    <Border BorderBrush="{TemplateBinding BorderBrush}"
-                                            Background="{TemplateBinding Background}">
-                                        <ContentPresenter/>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger
-                                            Property="IsMouseOver"
-                                            Value="True">
-                                            <Setter
-                                                Property="Background"
-                                                Value="#e5e5e5"/>
-                                            <Setter
-                                                Property="BorderBrush"
-                                                Value="#e5e5e5" />
-                                        </Trigger>
-                                        <Trigger
-                                            Property="IsSelected"
-                                            Value="True">
-                                            <Setter
-                                                Property="Background"
-                                                Value="#8d99ae"/>
-                                            <Setter
-                                                Property="BorderBrush"
-                                                Value="#edf2f4" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListView.ItemContainerStyle>
+                BorderBrush="Black"
+                ItemContainerStyle="{StaticResource ResourceKey=ListBoxProducts}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Border

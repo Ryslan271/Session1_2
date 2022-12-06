@@ -1,84 +1,181 @@
-﻿<Window x:Class="Session12.Pages.AddAndEditProductPage"
+﻿<Window x:Class="Session12.Windows.AddAndEditProduct"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Session12.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      Height="550" Width="900"
       Title="AddAndEditProductPage"
-      DataContext="{Binding RelativeSource={RelativeSource Self}}">
+      Name="Root"
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      Closing="Root_Closing">
     
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Border BorderBrush="Black"
+            BorderThickness="5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Border BorderBrush="Black"
-                BorderThickness="0 0 2 2">
-            <StackPanel>
-                <Image 
-                    VerticalAlignment="Top"
-                    Margin="10"
-                    Width="200"
-                    Height="200">
-                    <Image.Source>
-                        <Binding Path="ProductEditing.Photo">
-                            <Binding.TargetNullValue>
-                                <BitmapImage
-                                    UriSource="/Recourse/NetPhotoProduct.jpg"/>
-                            </Binding.TargetNullValue>
-                        </Binding>
-                    </Image.Source>
-                </Image>
+            <Border BorderBrush="Black"
+                BorderThickness=" 0 0 2 2 ">
+                <StackPanel VerticalAlignment="Center">
+                    <Border BorderBrush="Black"
+                        BorderThickness="1"
+                        Width="200"
+                        Height="200"
+                        Margin="0 0 0 10">
+                        
+                        <Image 
+                        VerticalAlignment="Top"
+                        Margin="10"
+                        Width="200"
+                        Height="200">
+                            <Image.Source>
+                                <Binding Path="ProductEditing.Photo">
+                                    <Binding.TargetNullValue>
+                                        <BitmapImage
+                                        UriSource="/Recourse/NetPhotoProduct.jpg"/>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                    </Border>
+                    
+                    <Button Padding="0 5"
+                        Content="Изменить картинку"
+                        Width="200"/>
+                </StackPanel>
+            </Border>
 
-                <Button
-                    Content="Изменить картинку"
-                    Width="200"/>
-            </StackPanel>
-        </Border>
-
-        <StackPanel Style="{StaticResource ResourceKey=StyleStackPanel}"
+            <StackPanel Style="{StaticResource ResourceKey=StyleStackPanel}"
                     Grid.Column="1">
-            <StackPanel Orientation="Horizontal"
+                
+                <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 20">
-                <TextBlock Text="Дата"/>
-                <TextBox Text="{Binding ProductEditing.AdditionDateTime}"
-                     Style="{StaticResource ResourceKey=StyleTextBox}"/>
+                    <TextBlock Text="Номер"
+                           Margin="0 0 10 0"/>
+                    <TextBox Text="{Binding ProductEditing.ID}"
+                             IsReadOnly="True"
+                             Style="{StaticResource ResourceKey=StyleTextBox}"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 20">
+                    <TextBlock Text="Дата"
+                           Margin="0 0 10 0"/>
+                    <TextBox Text="{Binding ProductEditing.AdditionDateTime}"
+                             Style="{StaticResource ResourceKey=StyleTextBox}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 20">
+                    <TextBlock Text="Название"
+                           Margin="0 0 10 0"/>
+                    <TextBox Text="{Binding ProductEditing.Title}"
+                             Style="{StaticResource ResourceKey=StyleTextBox}"
+                             TextWrapping="Wrap"
+                             PreviewTextInput="TextBox_PreviewTextInput"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 20">
+                    <TextBlock Text="Описание"
+                           Margin="0 0 10 0"/>
+                    <TextBox Text="{Binding ProductEditing.Description}"
+                             Style="{StaticResource ResourceKey=StyleTextBox}"
+                             TextWrapping="Wrap"
+                             PreviewTextInput="TextBox_PreviewTextInput"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 20">
+                    <TextBlock Text="Стоимость"
+                           Margin="0 0 10 0"/>
+                    <TextBox Text="{Binding ProductEditing.Cost}"
+                             Style="{StaticResource ResourceKey=StyleTextBox}"
+                             TextWrapping="Wrap"/>
+                </StackPanel>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
-                <TextBlock Text="Название"/>
-                <TextBox Text="{Binding ProductEditing.Title}"
-                     Style="{StaticResource ResourceKey=StyleTextBox}"/>
-            </StackPanel>
+            <ListBox ItemsSource="{Binding MeasureUnits}"
+                     x:Name="ListBoxRadioBattonMeasureUnits"
+                     Grid.Row="1"
+                     Grid.Column="0"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton x:Name="RadioButtonUnit"
+                                     GroupName="Name"
+                                     Content="{Binding Title}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-            <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
-                <TextBlock Text="Описание"/>
-                <TextBox Text="{Binding ProductEditing.Description}"
-                     Style="{StaticResource ResourceKey=StyleTextBox}"/>
-            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                <Border BorderBrush="Black"
+                        BorderThickness="1.5"
+                        Margin="5 10">
+                    <ListBox ItemsSource="{Binding ProductEditing.SupplierCountry}"
+                             Padding="5 10"
+                             x:Name="LeftListBoxCountry">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{Binding Brush}"
+                                        BorderThickness="2"
+                                        Padding="3">
+                                    <TextBlock Text="{Binding Title}"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
 
-            <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
-                <TextBlock Text="Стоимость"/>
-                <TextBox Text="{Binding ProductEditing.Cost}"
-                     Style="{StaticResource ResourceKey=StyleTextBox}"/>
-            </StackPanel>
+                <StackPanel Margin="20 0 20 0"
+                            VerticalAlignment="Center">
+                    <Button Content="&lt;"
+                            Margin="0 0 0 10"
+                            Padding="3 5 3 9"
+                            FontSize="25"
+                            FontWeight="Black" Click="ButtonDragLeft"/>
+                    <Button Content="&gt;"
+                            Padding="3 5 3 9"
+                            FontSize="25"
+                            FontWeight="Black" Click="ButtonDragRight"/>
+                </StackPanel>
 
-            <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
-                <TextBlock Text="Количество"/>
-                <TextBox Text="{Binding ProductEditing.Quantity}"
-                         Style="{StaticResource ResourceKey=StyleTextBox}"/>
+                <Border BorderBrush="Black"
+                        BorderThickness="1.5"
+                        Margin="5 10">
+                    <ListBox ItemsSource="{Binding SupplierCountrys}"
+                             Padding="5 10"
+                             x:Name="RightListBoxCountry">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{Binding Brush}"
+                                        BorderThickness="2"
+                                        Padding="3">
+                                    <TextBlock Text="{Binding Title}"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Border>
             </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

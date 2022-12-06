@@ -23,6 +23,7 @@ namespace Session12
             db.Product.Load();
             db.User.Load();
             db.MeasureUnit.Load();
+            db.SupplierCountry.Load();
         }
     }
 }

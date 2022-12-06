@@ -16,9 +16,11 @@ namespace Session12.Pages
     {
         #region Свойства 
 
-        public IList<MeasureUnit> MeasureUnits { get; set; }
+        public static ProductsListPage Instance { get; set; }
 
-        private ICollectionView productsDefault { get; set; }
+        public List<MeasureUnit> MeasureUnits { get; set; }
+
+        private ICollectionView ProductsDefault { get; set; }
 
         public ObservableCollection<int> NumberPages { get; set; } = new ObservableCollection<int>();
 
@@ -66,8 +68,7 @@ namespace Session12.Pages
 
         public ProductsListPage()
         {
-
-            MeasureUnits = App.db.MeasureUnit.Local;
+            MeasureUnits = App.db.MeasureUnit.Local.ToList();
             MeasureUnits.Insert(0, new MeasureUnit() { Title = "Все" });
 
             CountProductOnPage = 2; // количество продуктов на одной странице
@@ -75,6 +76,8 @@ namespace Session12.Pages
             TotalPages = 0; // максимальное количество страниц
 
             InitializeComponent();
+
+            Instance = this;
 
             Page();
 
@@ -89,14 +92,14 @@ namespace Session12.Pages
 
         #region Методы
 
-        private void Page()
+        public void Page()
         {
-            productsDefault = new CollectionViewSource { Source = App.db.Product.Local }.View;
+            ProductsDefault = new CollectionViewSource { Source = App.db.Product.Local }.View;
             FilterproductsDefault();
 
             Products = new CollectionViewSource
             {
-                Source = productsDefault.Cast<Product>()
+                Source = ProductsDefault.Cast<Product>()
                                         .Skip((NumberPage - 1) * CountProductOnPage)
                                         .Take(CountProductOnPage)
             }.View;
@@ -118,7 +121,7 @@ namespace Session12.Pages
 
         private void FilterproductsDefault()
         {
-            productsDefault.Filter = (obj) =>
+            ProductsDefault.Filter = (obj) =>
             {
                 var product = obj as Product;
 
@@ -225,7 +228,7 @@ namespace Session12.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //new Windows.AddAndEditProduct().Show();
+            new Windows.AddAndEditProduct(ProductList.SelectedItem as Product).ShowDialog();
         }
     }
 }
