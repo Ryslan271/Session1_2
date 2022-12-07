@@ -6,6 +6,7 @@
                      * Авторизация
                      * Регистрация-->
 
+    <!--#region Стиль StackPanel-->
     <Style x:Key="StyleStackPanel"
                TargetType="StackPanel">
         <Setter
@@ -30,7 +31,9 @@
                 Property="TextBlock.FontFamily"
                 Value="Comic Sans MS"/>
     </Style>
+    <!--#endregion-->
 
+    <!--#region Анимация кнопок-->
     <Style x:Key="BorderAnimation" TargetType="Border">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -55,4 +58,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <!--#endregion-->
+    
 </ResourceDictionary>
