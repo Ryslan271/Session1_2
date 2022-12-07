@@ -10,7 +10,7 @@
       Name="Root"
       DataContext="{Binding RelativeSource={RelativeSource Self}}"
       Closing="Root_Closing">
-    
+
     <Border BorderBrush="Black"
             BorderThickness="5">
         <Grid>
@@ -19,19 +19,20 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1.5*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="314*"/>
+                <RowDefinition Height="175*"/>
+                <RowDefinition Height="35*"/>
             </Grid.RowDefinitions>
 
             <Border BorderBrush="Black"
-                BorderThickness=" 0 0 2 2 ">
+                BorderThickness=" 0 0 2 2 " Grid.ColumnSpan="2" Margin="0,0,593,0">
                 <StackPanel VerticalAlignment="Center">
                     <Border BorderBrush="Black"
                         BorderThickness="1"
                         Width="200"
                         Height="200"
                         Margin="0 0 0 10">
-                        
+
                         <Image 
                         VerticalAlignment="Top"
                         Margin="10"
@@ -47,37 +48,38 @@
                             </Image.Source>
                         </Image>
                     </Border>
-                    
+
                     <Button Padding="0 5"
                         Content="Изменить картинку"
-                        Width="200"/>
+                        Width="200" Click="EditImageProduct"/>
                 </StackPanel>
             </Border>
 
             <StackPanel Style="{StaticResource ResourceKey=StyleStackPanel}"
-                    Grid.Column="1">
-                
+                    Grid.Column="1" Height="248" Width="110">
+
                 <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
+                            Margin="0 0 0 20"
+                            x:Name="IDStackPanel">
                     <TextBlock Text="Номер"
-                           Margin="0 0 10 0"/>
+                               Margin="0 0 10 0"/>
                     <TextBox Text="{Binding ProductEditing.ID}"
                              IsReadOnly="True"
                              Style="{StaticResource ResourceKey=StyleTextBox}"/>
                 </StackPanel>
-                
+
                 <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
+                            Margin="0 0 0 20">
                     <TextBlock Text="Дата"
-                           Margin="0 0 10 0"/>
+                               Margin="0 0 10 0"/>
                     <TextBox Text="{Binding ProductEditing.AdditionDateTime}"
                              Style="{StaticResource ResourceKey=StyleTextBox}"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
+                            Margin="0 0 0 20">
                     <TextBlock Text="Название"
-                           Margin="0 0 10 0"/>
+                               Margin="0 0 10 0"/>
                     <TextBox Text="{Binding ProductEditing.Title}"
                              Style="{StaticResource ResourceKey=StyleTextBox}"
                              TextWrapping="Wrap"
@@ -85,9 +87,9 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
+                            Margin="0 0 0 20">
                     <TextBlock Text="Описание"
-                           Margin="0 0 10 0"/>
+                               Margin="0 0 10 0"/>
                     <TextBox Text="{Binding ProductEditing.Description}"
                              Style="{StaticResource ResourceKey=StyleTextBox}"
                              TextWrapping="Wrap"
@@ -95,55 +97,66 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
-                        Margin="0 0 0 20">
+                            Margin="0 0 0 20">
                     <TextBlock Text="Стоимость"
-                           Margin="0 0 10 0"/>
+                               Margin="0 0 10 0"/>
                     <TextBox Text="{Binding ProductEditing.Cost}"
                              Style="{StaticResource ResourceKey=StyleTextBox}"
                              TextWrapping="Wrap"/>
                 </StackPanel>
             </StackPanel>
 
-            <ListBox ItemsSource="{Binding MeasureUnits}"
-                     x:Name="ListBoxRadioBattonMeasureUnits"
-                     Grid.Row="1"
-                     Grid.Column="0"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel IsItemsHost="True"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <RadioButton x:Name="RadioButtonUnit"
-                                     GroupName="Name"
-                                     Content="{Binding Title}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+            <StackPanel
+                        Grid.Column="0" Grid.ColumnSpan="2" Margin="0,314,593,0" Grid.RowSpan="3">
 
-            <StackPanel Grid.Row="1"
+                <TextBlock Text="Единицы измерения"
+                       Margin="10 5 0 5"/>
+
+                <ListBox ItemsSource="{Binding MeasureUnits}"
+                     x:Name="ListBoxRadioBattonMeasureUnits"
+                     Margin="10 5 10 5"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton x:Name="RadioButtonUnit"
+                                         GroupName="Name"
+                                         Content="{Binding Title}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+
+            <StackPanel
                         Grid.Column="1"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Center">
-                <Border BorderBrush="Black"
+                        HorizontalAlignment="Center" Margin="0,314,0,0" Grid.RowSpan="3" Width="428">
+
+                <StackPanel>
+                    <TextBlock Text="Выбранные страны поставщиков"/>
+
+                    <Border BorderBrush="Black"
                         BorderThickness="1.5"
                         Margin="5 10">
-                    <ListBox ItemsSource="{Binding ProductEditing.SupplierCountry}"
+                        <ListBox ItemsSource="{Binding ProductEditing.SupplierCountry}"
                              Padding="5 10"
                              x:Name="LeftListBoxCountry">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="{Binding Brush}"
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{Binding Brush}"
                                         BorderThickness="2"
                                         Padding="3">
-                                    <TextBlock Text="{Binding Title}"/>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </Border>
+                                        <TextBlock Text="{Binding Title}"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Border>
+                </StackPanel>
 
                 <StackPanel Margin="20 0 20 0"
                             VerticalAlignment="Center">
@@ -158,24 +171,35 @@
                             FontWeight="Black" Click="ButtonDragRight"/>
                 </StackPanel>
 
-                <Border BorderBrush="Black"
+                <StackPanel>
+                    <TextBlock Text="Доступные cтраны поставщиков"/>
+
+                    <Border BorderBrush="Black"
                         BorderThickness="1.5"
                         Margin="5 10">
-                    <ListBox ItemsSource="{Binding SupplierCountrys}"
+                        <ListBox ItemsSource="{Binding SupplierCountrys}"
                              Padding="5 10"
                              x:Name="RightListBoxCountry">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <Border BorderBrush="{Binding Brush}"
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="{Binding Brush}"
                                         BorderThickness="2"
                                         Padding="3">
-                                    <TextBlock Text="{Binding Title}"/>
-                                </Border>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    </ListBox>
-                </Border>
+                                        <TextBlock Text="{Binding Title}"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Border>
+                </StackPanel>
             </StackPanel>
+
+            <Button Content="Сохранить"
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    HorizontalAlignment="Right"
+                    Padding="5 0 5 0"
+                    Margin="0 5 20 5" Click="SaveChagesInProduct"/>
         </Grid>
     </Border>
 </Window>

@@ -26,46 +26,6 @@ namespace Session12.Pages
 
         #endregion
 
-        #region Dependency Propertys
-
-        public ICollectionView Products
-        {
-            get { return (ICollectionView)GetValue(ProductsProperty); }
-            set { SetValue(ProductsProperty, value); }
-        }
-
-        public static readonly DependencyProperty ProductsProperty =
-            DependencyProperty.Register("Products", typeof(ICollectionView), typeof(ProductsListPage));
-
-        public int CountProductOnPage
-        {
-            get { return (int)GetValue(CountProductOnPageProperty); }
-            set { SetValue(CountProductOnPageProperty, value); }
-        }
-
-        public static readonly DependencyProperty CountProductOnPageProperty =
-            DependencyProperty.Register("CountProductOnPage", typeof(int), typeof(ProductsListPage));
-
-        public int TotalPages
-        {
-            get { return (int)GetValue(TotalPagesProperty); }
-            set { SetValue(TotalPagesProperty, value); }
-        }
-
-        public static readonly DependencyProperty TotalPagesProperty =
-            DependencyProperty.Register("TotalPages", typeof(int), typeof(ProductsListPage));
-
-        public int NumberPage
-        {
-            get { return (int)GetValue(NumberPageProperty); }
-            set { SetValue(NumberPageProperty, value); }
-        }
-
-        public static readonly DependencyProperty NumberPageProperty =
-            DependencyProperty.Register("NumberPage", typeof(int), typeof(ProductsListPage));
-
-        #endregion
-
         public ProductsListPage()
         {
             MeasureUnits = App.db.MeasureUnit.Local.ToList();
@@ -220,15 +180,24 @@ namespace Session12.Pages
 
         #endregion
 
+        #region Обработчики
+
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CountProductOnPage = Convert.ToInt32((NumberProductInList.SelectedItem as ComboBoxItem).Tag);
             Page();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void EditProduct(object sender, RoutedEventArgs e)
         {
+            if (ProductList.SelectedItem == null)
+                return;
+
             new Windows.AddAndEditProduct(ProductList.SelectedItem as Product).ShowDialog();
         }
+
+        private void AddProdutc(object sender, RoutedEventArgs e) =>
+            new Windows.AddAndEditProduct(new Product()).ShowDialog();
+        #endregion
     }
 }

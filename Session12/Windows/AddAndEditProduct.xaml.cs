@@ -1,7 +1,9 @@
-﻿using Session12.Pages;
+﻿using Microsoft.Win32;
+using Session12.Pages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,42 +25,23 @@ namespace Session12.Windows
     /// </summary>
     public partial class AddAndEditProduct : Window
     {
-        #region Свойства 
-
-        public Product ProductEditing { get; set; }
-
-        #endregion
-
-        #region Dependency Properties
-
-        public ObservableCollection<MeasureUnit> MeasureUnits
-        {
-            get { return (ObservableCollection<MeasureUnit>)GetValue(MeasureUnitsProperty); }
-            set { SetValue(MeasureUnitsProperty, value); }
-        }
-
-        public static readonly DependencyProperty MeasureUnitsProperty =
-            DependencyProperty.Register("MeasureUnits", typeof(ObservableCollection<MeasureUnit>), typeof(AddAndEditProduct));
-
-        public ObservableCollection<SupplierCountry> SupplierCountrys
-        {
-            get { return (ObservableCollection<SupplierCountry>)GetValue(SupplierCountrysProperty); }
-            set { SetValue(SupplierCountrysProperty, value); }
-        }
-
-        public static readonly DependencyProperty SupplierCountrysProperty =
-            DependencyProperty.Register("SupplierCountrys", typeof(ObservableCollection<SupplierCountry>), typeof(AddAndEditProduct));
-
-        #endregion
-
         public AddAndEditProduct(Product product)
         {
+            bool flag = App.db.Product.Local.Any(x => x == product) == false;
+
+            if (flag) product.AdditionDateTime = DateTime.Now;
+
             MeasureUnits = App.db.MeasureUnit.Local;
             SupplierCountrys = new ObservableCollection<SupplierCountry> (App.db.SupplierCountry.Local.Except(product.SupplierCountry));
 
             ProductEditing = product;
+
             InitializeComponent();
+
+            if (flag) IDStackPanel.Visibility = Visibility.Collapsed;
         }
+
+        #region Обработка ввода в TextBox
 
         private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -67,6 +50,9 @@ namespace Session12.Windows
             if (Regex.IsMatch(str, @"[^\w-\s]|\d"))
                 e.Handled = true;
         }
+        #endregion
+
+        #region Страны поставщиков 
 
         private void ButtonDragLeft(object sender, RoutedEventArgs e)
         {
@@ -93,23 +79,92 @@ namespace Session12.Windows
 
             LeftListBoxCountry.Items.Refresh();
         }
+        #endregion
+
+        #region Закрытие приложение
 
         private void Root_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            switch (MessageBox.Show("Вы действительно хотите сохранить эти маленькие данные",
-                                    "Уведомлние",
-                                    MessageBoxButton.YesNoCancel,
-                                    MessageBoxImage.Warning))
+            if (App.db.ChangeTracker.HasChanges() == false)
+                return;
+
+            switch (Ask())
             {
                 case MessageBoxResult.Yes:
                     App.db.SaveChanges();
+                    ProductsListPage.Instance.Page();
                     break;
 
                 case MessageBoxResult.Cancel:
                     e.Cancel = true;
                     break;
             }
-            ProductsListPage.Instance.Page();
         }
+        #endregion
+
+        #region Helper
+
+        private MessageBoxResult Ask() =>
+            MessageBox.Show("Вы действительно хотите сохранить эти маленькие данные",
+                            "Уведомление",
+                            MessageBoxButton.YesNoCancel,
+                            MessageBoxImage.Warning);
+
+        #endregion
+
+        #region Изменение изображение
+
+        private void EditImageProduct(object sender, RoutedEventArgs e)
+        {
+            ChageImage();
+        }
+
+        private void ChageImage()
+        {
+            string filePath = OpenImage();
+
+            if (filePath == null)
+                return;
+
+            byte[] photo = File.ReadAllBytes(filePath);
+
+            if (photo.Length >= 150 * 1024)
+            {
+                MessageBox.Show("Картинка не должна весить больше 150 Кб");
+                ChageImage();
+                return;
+            }
+
+            ProductEditing.Photo = photo;
+        }
+
+        private string OpenImage()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog()
+            {
+                Filter = "Изображения|*.png;*.jpg",
+                DefaultExt = "Изображения|*.png;*.jpg",
+                CheckFileExists = true,
+                Multiselect = false
+            };
+            if (openFileDialog.ShowDialog() == true)
+                return openFileDialog.FileName;
+            return null;
+        }
+        #endregion
+
+        #region Кнопка сохранения
+
+        private void SaveChagesInProduct(object sender, RoutedEventArgs e)
+        {
+            switch (Ask())
+            {
+                case MessageBoxResult.Yes:
+                    App.db.SaveChanges();
+                    ProductsListPage.Instance.Page();
+                    break;
+            }
+        }
+        #endregion
     }
 }

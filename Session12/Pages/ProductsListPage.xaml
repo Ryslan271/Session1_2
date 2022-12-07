@@ -56,7 +56,8 @@
                     SelectedIndex="0">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <ComboBoxItem Tag="{Binding Title}" Content="{Binding Title}"/>
+                            <ComboBoxItem Tag="{Binding Title}"
+                                          Content="{Binding Title}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -225,11 +226,11 @@
                 <Button 
                     Padding="5"
                     Content="Добавить"
-                    Margin="10"/>
+                    Margin="10" Click="AddProdutc"/>
                 <Button 
                     Padding="5"
                     Content="Редактировать"
-                    Margin="10" Click="Button_Click"/>
+                    Margin="10" Click="EditProduct"/>
             </StackPanel>
             
             <StackPanel
