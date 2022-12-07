@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
         xmlns:local="clr-namespace:Session12.Pages"
         mc:Ignorable="d" 
-        Width="300"
+        Width="350"
         Height="590"
         Icon="/Resources/Image/logo.png"
         Title="Авторизация">
@@ -52,17 +52,23 @@
         </StackPanel>
         
         <Separator/>
-        
-        <Button Margin="0 10 0 0"
-                x:Name="Enter"
-                Content="Войти"
-                Padding="6 4"
-                Click="Enter_Click"/>
-        
-        <Button Margin="0 10 0 0"
-                x:Name="GoToRegistrationPage"
-                Padding="6 4"
-                Content="Зарегестриловаться"
-                Click="GoToRegistrationPage_Click"/>
+
+        <Border Margin="0 10 0 0"
+                Style="{DynamicResource BorderAnimation}">
+            <Button x:Name="Enter"
+                    Content="Войти"
+                    Height="40"
+                    Width="250"
+                    Click="Enter_Click"/>
+        </Border>
+
+        <Border Margin="0 10 0 0"
+                Style="{DynamicResource BorderAnimation}">
+            <Button x:Name="GoToRegistrationPage"
+                    Height="40"
+                    Width="250"
+                    Content="Зарегестриловаться"
+                    Click="GoToRegistrationPage_Click"/>
+        </Border>
     </StackPanel>
 </Window>
