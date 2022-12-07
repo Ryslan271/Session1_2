@@ -59,7 +59,7 @@ namespace Session12.Pages
         private void GoToRegistrationPage_Click(object sender, RoutedEventArgs e)
         {
             new RegistrationPage().Show();
-            Close();
+            Hide();
         }
     }
 }

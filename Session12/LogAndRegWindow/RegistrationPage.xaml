@@ -7,6 +7,7 @@
         mc:Ignorable="d" 
         Height="680"
         Width="300"
+        Icon="/Resources/Image/logo.png"
         Title="RegistrationPage">
     
     <StackPanel Style="{StaticResource ResourceKey=StyleStackPanel}">

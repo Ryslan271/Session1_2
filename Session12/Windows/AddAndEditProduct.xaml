@@ -9,7 +9,8 @@
       Title="AddAndEditProductPage"
       Name="Root"
       DataContext="{Binding RelativeSource={RelativeSource Self}}"
-      Closing="Root_Closing">
+      Closing="Root_Closing"
+      Icon="/Resources/Image/logo.png">
 
     <Border BorderBrush="Black"
             BorderThickness="5">

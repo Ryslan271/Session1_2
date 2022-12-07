@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Session12"
         mc:Ignorable="d"
-        Icon="Recourse/icon-Logo.png"
+        Icon="Resources/Image/logo.png"
         Title="Доставка" 
         Height="550" 
         Width="800">

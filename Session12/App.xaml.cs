@@ -26,6 +26,7 @@ namespace Session12
             db.SupplierCountry.Load();
             db.Order.Load();
             db.Order_Product.Load();
+            db.Gender.Load();
         }
     }
 }

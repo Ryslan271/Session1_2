@@ -66,6 +66,7 @@
     </ApplicationDefinition>
     <Compile Include="DependencyProperties\AddAndEditProduct.Extension.cs" />
     <Compile Include="DependencyProperties\OrderPage.Extension.cs" />
+    <Compile Include="DependencyProperties\PersonalCabinetPage.Extension.cs" />
     <Compile Include="DependencyProperties\ProductsListPage.Extension.cs" />
     <Compile Include="Gender.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
@@ -231,6 +232,7 @@
     <Resource Include="Resources\Image\NetPhotoProduct.jpg" />
     <Resource Include="Resources\Image\PersonPhoto.jpg" />
     <Resource Include="Resources\Image\icon_orders.png" />
+    <Resource Include="Resources\Image\logo.png" />
     <Content Include="Sessio.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Sessio.edmx</DependentUpon>
@@ -246,7 +248,6 @@
     <Resource Include="Resources\Image\icon_product.png" />
     <Resource Include="Resources\Image\icon_goinyourhouse.png" />
     <Resource Include="Resources\Image\icon_exit.png" />
-    <Resource Include="Resources\Image\icon-Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -96,7 +96,7 @@ namespace Session12.Pages
         private void GoToLoginPagePage_Click(object sender, RoutedEventArgs e)
         {
             new LoginPage().Show();
-            Close();
+            Hide();
         }
     }
 }
