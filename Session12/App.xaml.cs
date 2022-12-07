@@ -24,6 +24,8 @@ namespace Session12
             db.User.Load();
             db.MeasureUnit.Load();
             db.SupplierCountry.Load();
+            db.Order.Load();
+            db.Order_Product.Load();
         }
     }
 }

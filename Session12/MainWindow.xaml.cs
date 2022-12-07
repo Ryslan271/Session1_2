@@ -59,7 +59,8 @@ namespace Session12
 
         private void OpenOrdersList(object sender, RoutedEventArgs e)
         {
-
+            (sender as RadioButton).IsChecked = true;
+            MainFrame.Navigate(new Pages.OrderPage());
         }
 
         private void OpenGoinYourHouseList(object sender, RoutedEventArgs e)

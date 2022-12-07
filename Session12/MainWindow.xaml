@@ -28,7 +28,7 @@
                 x:Name="ParsonCabinet">
                 <RadioButton.Content>
                     <Image
-                        Source="Recourse/icon_main.png"
+                        Source="Resources/Image/icon_main.png"
                         Margin="5 0 0 0"/>
                 </RadioButton.Content>
             </RadioButton>
@@ -38,7 +38,7 @@
                 Click="OpenProductList">
                 <RadioButton.Content>
                     <Image
-                        Source="Recourse/icon_product.png"
+                        Source="Resources/Image/icon_product.png"
                         Margin="5 0 0 0"/>
                 </RadioButton.Content>
             </RadioButton>
@@ -48,7 +48,7 @@
                 Click="OpenPostavchikList">
                 <RadioButton.Content>
                     <Image
-                        Source="Recourse/icon_postavchik.png"
+                        Source="Resources/Image/icon_postavchik.png"
                         Margin="5 0 0 0"/>
                 </RadioButton.Content>
             </RadioButton>
@@ -58,7 +58,7 @@
                 Click="OpenOrdersList">
                 <RadioButton.Content>
                     <Image
-                        Source="Recourse/icon_orders.png"
+                        Source="Resources/Image/icon_orders.png"
                         Margin="5 0 0 0"/>
                 </RadioButton.Content>
             </RadioButton>
@@ -68,7 +68,7 @@
                 Click="OpenGoinYourHouseList">
                 <RadioButton.Content>
                     <Image
-                        Source="Recourse/icon_goinyourhouse.png"
+                        Source="Resources/Image/icon_goinyourhouse.png"
                         Margin="5 0 0 0"/>
                 </RadioButton.Content>
             </RadioButton>
@@ -78,7 +78,7 @@
                 Click="ButtonClickExit">
                 <RadioButton.Content>
                     <Image
-                        Source="Recourse/icon_exit.png"
+                        Source="Resources/Image/icon_exit.png"
                         Margin="5 0 0 0"/>
                 </RadioButton.Content>
             </RadioButton>

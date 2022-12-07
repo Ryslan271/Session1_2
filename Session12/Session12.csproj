@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DependencyProperties\AddAndEditProduct.Extension.cs" />
+    <Compile Include="DependencyProperties\OrderPage.Extension.cs" />
     <Compile Include="DependencyProperties\ProductsListPage.Extension.cs" />
     <Compile Include="Gender.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
@@ -87,6 +88,11 @@
     <Compile Include="Order_Product.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\OrderPage.xaml.cs">
+      <DependentUpon>OrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialClasses\Order.Extension.cs" />
+    <Compile Include="PartialClasses\User.Extension.cs" />
     <Compile Include="Windows\AddAndEditProduct.xaml.cs">
       <DependentUpon>AddAndEditProduct.xaml</DependentUpon>
     </Compile>
@@ -150,6 +156,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\OrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style\StyleToEditAddProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style\StyleToLoginRegist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style\StyleToMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style\StyleToPersonalCabinet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style\StyleToProductList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AddAndEditProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,8 +228,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Recourse\NetPhotoProduct.jpg" />
-    <Resource Include="Recourse\PersonPhoto.jpg" />
+    <Resource Include="Resources\Image\NetPhotoProduct.jpg" />
+    <Resource Include="Resources\Image\PersonPhoto.jpg" />
+    <Resource Include="Resources\Image\icon_orders.png" />
     <Content Include="Sessio.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Sessio.edmx</DependentUpon>
@@ -210,13 +241,12 @@
       <DependentUpon>Sessio.edmx</DependentUpon>
       <LastGenOutput>Sessio.cs</LastGenOutput>
     </Content>
-    <Resource Include="Recourse\icon_main.png" />
-    <Resource Include="Recourse\icon_postavchik.png" />
-    <Resource Include="Recourse\icon_product.png" />
-    <Resource Include="Recourse\icon_goinyourhouse.png" />
-    <Resource Include="Recourse\icon_exit.png" />
-    <Resource Include="Recourse\icon-Logo.png" />
-    <Content Include="Recourse\icon_orders.png" />
+    <Resource Include="Resources\Image\icon_main.png" />
+    <Resource Include="Resources\Image\icon_postavchik.png" />
+    <Resource Include="Resources\Image\icon_product.png" />
+    <Resource Include="Resources\Image\icon_goinyourhouse.png" />
+    <Resource Include="Resources\Image\icon_exit.png" />
+    <Resource Include="Resources\Image\icon-Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

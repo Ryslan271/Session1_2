@@ -1,22 +1,13 @@
 ﻿using Microsoft.Win32;
 using Session12.Pages;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Session12.Windows
 {
@@ -32,7 +23,7 @@ namespace Session12.Windows
             if (flag) product.AdditionDateTime = DateTime.Now;
 
             MeasureUnits = App.db.MeasureUnit.Local;
-            SupplierCountrys = new ObservableCollection<SupplierCountry> (App.db.SupplierCountry.Local.Except(product.SupplierCountry));
+            SupplierCountrys = new ObservableCollection<SupplierCountry>(App.db.SupplierCountry.Local.Except(product.SupplierCountry));
 
             ProductEditing = product;
 
@@ -95,8 +86,10 @@ namespace Session12.Windows
                     ProductsListPage.Instance.Page();
                     break;
 
-                case MessageBoxResult.Cancel:
-                    e.Cancel = true;
+                case MessageBoxResult.No:
+                    foreach (var entry in App.db.ChangeTracker.Entries().Where(entry => entry.State == System.Data.Entity.EntityState.Modified))
+                        entry.CurrentValues.SetValues(entry.OriginalValues);
+                    ProductsListPage.Instance.Page();
                     break;
             }
         }
@@ -107,7 +100,7 @@ namespace Session12.Windows
         private MessageBoxResult Ask() =>
             MessageBox.Show("Вы действительно хотите сохранить эти маленькие данные",
                             "Уведомление",
-                            MessageBoxButton.YesNoCancel,
+                            MessageBoxButton.YesNo,
                             MessageBoxImage.Warning);
 
         #endregion
@@ -157,10 +150,20 @@ namespace Session12.Windows
 
         private void SaveChagesInProduct(object sender, RoutedEventArgs e)
         {
+            if (App.db.ChangeTracker.HasChanges() == false &&
+                ListBoxRadioBattonMeasureUnits.SelectedItem == null)
+                return;
+
             switch (Ask())
             {
                 case MessageBoxResult.Yes:
                     App.db.SaveChanges();
+                    ProductsListPage.Instance.Page();
+                    break;
+
+                case MessageBoxResult.No:
+                    foreach (var entry in App.db.ChangeTracker.Entries().Where(entry => entry.State == System.Data.Entity.EntityState.Modified))
+                        entry.CurrentValues.SetValues(entry.OriginalValues);
                     ProductsListPage.Instance.Page();
                     break;
             }

@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--StackPanel-->
+    <!--Используется:
+                     * Личный кабинет-->
+
+    <Style TargetType="StackPanel" x:Key="PersenCabinetStackpanel">
+        <Setter
+                Property="TextBox.Foreground"
+                Value="#FF2B2B2B"/>
+        <Setter
+                Property="TextBox.FontSize"
+                Value="15"/>
+        <Setter
+                Property="TextBlock.FontSize"
+                Value="18"/>
+        <Setter 
+                Property="TextBox.FontWeight"
+                Value="DemiBold"/>
+        <Setter 
+                Property="TextBox.FontFamily"
+                Value="Comic Sans MS"/>
+        <Setter 
+                Property="TextBox.Margin"
+                Value="0 0 0 15"/>
+    </Style>
+
+</ResourceDictionary>
