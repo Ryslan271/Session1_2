@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Session12.Pages
+namespace Session12.Windows
 {
     /// <summary>
     /// Логика взаимодействия для RegistrationPage.xaml

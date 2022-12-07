@@ -71,10 +71,10 @@
     <Compile Include="Gender.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
     </Compile>
-    <Compile Include="LogAndRegWindow\LoginPage.xaml.cs">
+    <Compile Include="Windows\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogAndRegWindow\RegistrationPage.xaml.cs">
+    <Compile Include="Windows\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MeasureUnit.cs">
@@ -149,11 +149,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="LogAndRegWindow\LoginPage.xaml">
+    <Page Include="Windows\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LogAndRegWindow\RegistrationPage.xaml">
+    <Page Include="Windows\RegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

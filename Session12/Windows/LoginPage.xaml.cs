@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace Session12.Pages
+namespace Session12.Windows
 {
     /// <summary>
     /// Логика взаимодействия для LoginPage.xaml
