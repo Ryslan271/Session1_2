@@ -8,7 +8,7 @@
         Icon="Resources/Image/logo.png"
         Title="Доставка" 
         Height="550" 
-        Width="800">
+        Width="850">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="12*"/>
@@ -22,10 +22,9 @@
         <StackPanel
             Grid.Column="0"
             Grid.Row="1">
-            <RadioButton 
-                Style="{StaticResource MenuButton}"
-                Click="OpenMainList"
-                x:Name="ParsonCabinet">
+            <RadioButton Style="{StaticResource MenuButton}"
+                         Click="OpenMainList"
+                         x:Name="ParsonCabinet">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_main.png"
@@ -33,9 +32,8 @@
                 </RadioButton.Content>
             </RadioButton>
             
-            <RadioButton 
-                Style="{StaticResource MenuButton}"
-                Click="OpenProductList">
+            <RadioButton Style="{StaticResource MenuButton}"
+                         Click="OpenProductList">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_product.png"
@@ -43,9 +41,9 @@
                 </RadioButton.Content>
             </RadioButton>
             
-            <RadioButton 
-                Style="{StaticResource MenuButton}"
-                Click="OpenPostavchikList">
+            <RadioButton x:Name="OrdersListButton"
+                         Style="{StaticResource MenuButton}"
+                         Click="OpenPostavchikList">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_postavchik.png"
@@ -53,9 +51,8 @@
                 </RadioButton.Content>
             </RadioButton>
             
-            <RadioButton 
-                Style="{StaticResource MenuButton}"
-                Click="OpenOrdersList">
+            <RadioButton x:Name="MakeOrderButton" Style="{StaticResource MenuButton}"
+                         Click="OpenOrdersList">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_orders.png"
@@ -63,9 +60,8 @@
                 </RadioButton.Content>
             </RadioButton>
             
-            <RadioButton 
-                Style="{StaticResource MenuButton}"
-                Click="OpenGoinYourHouseList">
+            <RadioButton Style="{StaticResource MenuButton}"
+                         Click="OpenGoinYourHouseList">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_goinyourhouse.png"
@@ -73,9 +69,8 @@
                 </RadioButton.Content>
             </RadioButton>
             
-            <RadioButton 
-                Style="{StaticResource MenuButton}"
-                Click="ButtonClickExit">
+            <RadioButton Style="{StaticResource MenuButton}"
+                         Click="ButtonClickExit">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_exit.png"

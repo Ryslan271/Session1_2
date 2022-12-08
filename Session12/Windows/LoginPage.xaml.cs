@@ -53,7 +53,7 @@ namespace Session12.Windows
             App.User = user;
 
             new MainWindow().Show();
-            Hide();
+            Close();
         }
 
         private void GoToRegistrationPage_Click(object sender, RoutedEventArgs e)

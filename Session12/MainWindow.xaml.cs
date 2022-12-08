@@ -33,6 +33,7 @@ namespace Session12
         public MainWindow()
         {
             InitializeComponent();
+            Instance = this;
             ParsonCabinet.IsChecked = true;
             MainFrame.Navigate(new Pages.PersonalCabinetPage());
         }
@@ -54,13 +55,14 @@ namespace Session12
 
         private void OpenPostavchikList(object sender, RoutedEventArgs e)
         {
-
+            (sender as RadioButton).IsChecked = true;
+            MainFrame.Navigate(new Pages.OrderPage());
         }
 
         private void OpenOrdersList(object sender, RoutedEventArgs e)
         {
             (sender as RadioButton).IsChecked = true;
-            MainFrame.Navigate(new Pages.OrderPage());
+            MainFrame.Navigate(new Pages.MakeOrderPage());
         }
 
         private void OpenGoinYourHouseList(object sender, RoutedEventArgs e)

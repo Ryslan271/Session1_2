@@ -13,7 +13,7 @@
         <EntityTypeShape EntityType="SessioModel.Product" Width="1.5" PointX="5.25" PointY="12" />
         <EntityTypeShape EntityType="SessioModel.ProductsReceipt" Width="1.5" PointX="7.5" PointY="6.625" />
         <EntityTypeShape EntityType="SessioModel.Role" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SessioModel.Supplier" Width="1.5" PointX="7.75" PointY="10" />
+        <EntityTypeShape EntityType="SessioModel.Supplier" Width="1.5" PointX="15" PointY="10" />
         <EntityTypeShape EntityType="SessioModel.SupplierCountry" Width="1.5" PointX="7.5" PointY="12.625" />
         <EntityTypeShape EntityType="SessioModel.User" Width="1.5" PointX="3" PointY="2.75" />
         <AssociationConnector Association="SessioModel.FK_User_Gender" />

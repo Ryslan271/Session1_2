@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# IDE0025: Использовать тело выражения для свойств
+csharp_style_expression_bodied_properties = false

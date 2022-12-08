@@ -77,7 +77,7 @@ namespace Session12.Windows
             App.db.SaveChanges();
 
             new MainWindow().Show();
-            Hide();
+            Close();
         }
 
         private (string, bool) ValidatePassword(string password)

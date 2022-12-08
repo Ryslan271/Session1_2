@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -6,14 +7,14 @@ namespace Session12.Pages
 {
     public partial class OrderPage
     {
-        public ObservableCollection<Order> Orders
+        public ICollectionView Orders
         {
-            get { return (ObservableCollection<Order>)GetValue(OrdersProperty); }
+            get { return (ICollectionView)GetValue(OrdersProperty); }
             set { SetValue(OrdersProperty, value); }
         }
 
         public static readonly DependencyProperty OrdersProperty =
-            DependencyProperty.Register("Orders", typeof(ObservableCollection<Order>), typeof(OrderPage));
+            DependencyProperty.Register("Orders", typeof(ICollectionView), typeof(OrderPage));
 
     }
 }

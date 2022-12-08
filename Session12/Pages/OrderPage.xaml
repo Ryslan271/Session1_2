@@ -10,15 +10,23 @@
       DataContext="{Binding RelativeSource={RelativeSource Self}}">
 
     <Grid>
-        <ListBox ItemsSource="{Binding Orders}"
-                 d:ItemsSource="{d:SampleData ItemCount=2}"
-                 ItemContainerStyle="{StaticResource ResourceKey=ListBoxProducts}">
-            <ListBox.ItemTemplate>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="419*"/>
+            <RowDefinition Height="31*"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Orders}"
+                  d:ItemsSource="{d:SampleData ItemCount=2}"
+                  ItemContainerStyle="{StaticResource ResourceKey=ListBoxProducts}"
+                  x:Name="OrdersList" Grid.Row="0">
+            <ListView.GroupStyle>
+                <GroupStyle ContainerStyle="{StaticResource ResourceKey=OrderListGroupStyle}"/>
+            </ListView.GroupStyle>
+            <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="Black"
                             BorderThickness="2"
                             Padding="10"
-                            Margin="0 0 0 5"
+                            Margin="25 0 0 5"
                             CornerRadius="3">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -35,7 +43,8 @@
 
                             <TextBlock Margin="0 0 0 10"
                                        TextWrapping="Wrap"
-                                       MaxWidth="200">
+                                       MaxWidth="200"
+                                       HorizontalAlignment="Left">
                                 <TextBlock.Text>
                                     <MultiBinding
                                             StringFormat="{}Номер:  {0} - Дата: {1}">
@@ -49,7 +58,7 @@
 
                             <TextBlock Grid.Row="1"
                                        Text="{Binding User.Fullname, 
-                                              StringFormat='{} Заказщик: {0}'}"/>
+                                              StringFormat='{} Заказчик: {0}'}"/>
 
                             <TextBlock Grid.Row="2"
                                        Text="{Binding User1.Fullname, 
@@ -68,38 +77,56 @@
                             <TextBlock Grid.Row="3"
                                        Grid.Column="0"
                                        Text="{Binding TotalCost, 
-                                              StringFormat='{} Общая стоимость покупки: {0:f}'}"/>
+                                              StringFormat='{} Общая стоимость покупки: {0:f} рубль.'}"/>
 
-                            <ListBox Grid.Row="1"
+                            <Border  Grid.Row="1"
                                      Grid.ColumnSpan="2"
                                      Grid.Column="1"
                                      Grid.RowSpan="2"
-                                     ItemsSource="{Binding Order_Product}">
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel IsItemsHost="True"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border BorderBrush="Black"
-                                                BorderThickness="1"
-                                                Padding="5"
-                                                CornerRadius="4"
-                                                Background="Transparent">
-                                            <StackPanel>
-                                                <TextBlock Text="{Binding Product.Title}"/>
-                                                <TextBlock Text="{Binding Quantity}"/>
-                                                <TextBlock Text="{Binding PurchasePrice}"/>
-                                            </StackPanel>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
+                                     BorderBrush="Black"
+                                     BorderThickness="1"
+                                     Padding="8">
+                                <ItemsControl ItemsSource="{Binding Order_Product}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="Black"
+                                                    BorderThickness="1"
+                                                    Padding="5"
+                                                    CornerRadius="4"
+                                                    Background="Transparent"
+                                                    Margin="0 0 10 0">
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Product.Title}"/>
+                                                    <TextBlock Text="{Binding Quantity}"/>
+                                                    <TextBlock Text="{Binding PurchasePrice}"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
                         </Grid>
                     </Border>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 20 0">
+            
+            <Button Content="Просмотреть"
+                    Padding="4"/>
+
+            <Button Content="Оформить"
+                    Padding="4"
+                    Margin="20 0 0 0" Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

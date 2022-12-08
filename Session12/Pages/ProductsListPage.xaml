@@ -145,7 +145,7 @@
                                             <Binding
                                                 Path="Photo">
                                                 <Binding.TargetNullValue>
-                                                    <BitmapImage UriSource="/Recourse/NetPhotoProduct.jpg"/>
+                                                    <BitmapImage UriSource="/Resources/Image/NetPhotoProduct.jpg"/>
                                                 </Binding.TargetNullValue>
                                             </Binding>
                                         </Image.Source>

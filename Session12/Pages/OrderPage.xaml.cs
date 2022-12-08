@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,17 @@ namespace Session12.Pages
     {
         public OrderPage()
         {
-            Orders = App.db.Order.Local;
+            Orders = new CollectionViewSource { Source = App.db.Order.Local }.View;
+            Orders.GroupDescriptions.Add(new PropertyGroupDescription("InProcessing"));
 
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.OrdersListButton.IsChecked = true;
+            MainWindow.Instance.MakeOrderButton.IsChecked = false;
+            MainWindow.Instance.MainFrame.Navigate(new Pages.MakeOrderPage(OrdersList.SelectedItem as Order));
         }
     }
 }

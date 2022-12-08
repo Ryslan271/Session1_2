@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace Session12
 {
     public partial class Order
     {
-        public int Quantity 
+        public string InProcessing // Статус в обработке
+        {
+            get 
+            { 
+                return this.OrderStatus.ID == 1 ? "Новый" : "В обработке";
+            }
+        }
+
+        public int Quantity
         {
             get => this.Order_Product.Sum(x => x.Quantity);
         }
 
         public ObservableCollection<Order_Product> Order_Products
         {
-            get => new ObservableCollection<Order_Product> (Order_Product);
+            get => new ObservableCollection<Order_Product>(Order_Product);
         }
 
         public decimal TotalCost

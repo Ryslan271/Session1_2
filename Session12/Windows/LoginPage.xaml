@@ -67,7 +67,7 @@
             <Button x:Name="GoToRegistrationPage"
                     Height="40"
                     Width="250"
-                    Content="Зарегестриловаться"
+                    Content="Зарегистрироваться"
                     Click="GoToRegistrationPage_Click"/>
         </Border>
     </StackPanel>
