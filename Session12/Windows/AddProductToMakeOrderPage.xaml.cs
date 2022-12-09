@@ -49,16 +49,32 @@ namespace Session12.Windows
 
         private void ButtonAddProductInOrderClick(object sender, RoutedEventArgs e)
         {
-            if (ProductListMake.SelectedItem == null)
+            if (ProductListMake.SelectedItem == null ||
+                MakeOrderPage.AskSave() == false)
                 return;
+
+            Product product = ProductListMake.SelectedItem as Product;
+
+            if (product.QuantityOrder == 0 ||
+                product.PurchasePrice == 0)
+            {
+                MessageBox.Show("Нельзя добавить продукт без: 'Закупаемой стоимости', 'Закупаемого количества'");
+                return;
+            }
 
             App.db.Order_Product.Local.Add(new Order_Product()
             {
                 Order = MakeOrderPage.Instance.CurrentOrder,
-                Product = ProductListMake.SelectedItem as Product,
-                Quantity = (ProductListMake.SelectedItem as Product).QuantityOrder,
-                PurchasePrice = (ProductListMake.SelectedItem as Product).PurchasePrice
+                Product = product,
+                Quantity = product.QuantityOrder,
+                PurchasePrice = product.PurchasePrice
             });
+
+            App.db.SaveChanges();
+
+            Products.Remove(ProductListMake.SelectedItem as Product);
+
+            MakeOrderPage.Instance.ProductListMake.Items.Refresh();
         }
         #endregion
     }

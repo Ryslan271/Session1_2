@@ -29,11 +29,18 @@ namespace Session12.Pages
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonOperOrderClick(object sender, RoutedEventArgs e)
         {
             MainWindow.Instance.OrdersListButton.IsChecked = true;
             MainWindow.Instance.MakeOrderButton.IsChecked = false;
             MainWindow.Instance.MainFrame.Navigate(new Pages.MakeOrderPage(OrdersList.SelectedItem as Order));
+        }
+
+        private void ButtonNewOrderClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Instance.OrdersListButton.IsChecked = true;
+            MainWindow.Instance.MakeOrderButton.IsChecked = false;
+            MainWindow.Instance.MainFrame.Navigate(new Pages.MakeOrderPage());
         }
     }
 }

@@ -23,7 +23,12 @@ namespace Session12.Pages
         public static MakeOrderPage Instance { get; set; }
         public MakeOrderPage(Order _order = null)
         {
-            CurrentOrder = _order;
+            CurrentOrder = _order ?? new Order()
+            {
+                DateTime = DateTime.Now,
+                OrderStatusID = 1,
+                User = App.User
+            };
 
             InitializeComponent();
 
@@ -35,7 +40,7 @@ namespace Session12.Pages
         private bool AskDelete() =>
             MessageBox.Show("Вы действительно хотите удалить выбранную запись", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
 
-        private bool AskSave() =>
+        public static bool AskSave() =>
            MessageBox.Show("Вы действительно хотите сохранить эти данные", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
         #endregion
 
@@ -54,8 +59,7 @@ namespace Session12.Pages
 
         private void ButtonSaveProductClick(object sender, RoutedEventArgs e)
         {
-            if (App.db.ChangeTracker.HasChanges() == false ||
-                AskSave() == false)
+            if (AskSave() == false)
                 return;
 
             App.db.SaveChanges();

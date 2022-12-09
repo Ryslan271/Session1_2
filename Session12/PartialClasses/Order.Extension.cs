@@ -7,10 +7,7 @@ namespace Session12
     {
         public string InProcessing // Статус в обработке
         {
-            get
-            {
-                return this.OrderStatus.ID == 1 ? "Новый" : "В обработке";
-            }
+            get => this.OrderStatusID == 1 ? "Новый" : "В обработке";
         }
 
         public int Quantity
@@ -20,7 +17,7 @@ namespace Session12
 
         public ObservableCollection<Order_Product> Order_Products
         {
-            get => new ObservableCollection<Order_Product>(Order_Product);
+            get => new ObservableCollection<Order_Product>(this.Order_Product);
         }
 
         public decimal TotalCost

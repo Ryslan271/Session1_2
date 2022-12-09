@@ -108,13 +108,15 @@
                                     MaxWidth="200">
                                     <TextBlock.Text>
                                         <MultiBinding
-                                            StringFormat="{}Название:  {0} {1} {2}">
+                                            StringFormat="{}Название:  {0} {1} {2}, стоимость за ед. - {3:f}">
                                             <Binding
                                                 Path="Title"/>
                                             <Binding
                                                 Path="Quantity"/>
                                             <Binding
                                                 Path="MeasureUnit.Title"/>
+                                            <Binding
+                                                Path="Cost"/>
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
@@ -135,37 +137,40 @@
                                     Grid.Column="1"/>
 
                                 <TextBlock
-                                    Text="{Binding Path=Cost,
+                                    Text="{Binding Path=TotalPriceOrder,
                                                    StringFormat={}Стоимость: {0:f} рубл.}"
                                     Grid.Row="2"
                                     Grid.Column="2"
                                     Margin="0 0 10 0"/>
 
-                                <ListBox
-                                    Margin="0 10 0 0"
-                                    Grid.Column="1"
-                                    Grid.ColumnSpan="2"
-                                    Grid.Row="3"
-                                    ItemsSource="{Binding Path=SupplierCountry}">
-                                    <ListBox.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel IsItemsHost="True"/>
-                                        </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border 
-                                                BorderBrush="{Binding Brush}"
-                                                BorderThickness="2"
-                                                Padding="3">
-                                                <TextBlock Text="{Binding Title}"/>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
 
+                                <Border Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Row="3"
+                                        BorderBrush="Black"
+                                        BorderThickness="1"
+                                        Padding="8">
+                                    <ItemsControl ItemsSource="{Binding Path=SupplierCountry}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel IsItemsHost="True"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border 
+                                                    BorderBrush="{Binding Brush}"
+                                                    BorderThickness="2"
+                                                    Padding="3">
+                                                    <TextBlock Text="{Binding Title}"/>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+                                
                                 <TextBlock
-                                    Text="{Binding Path=Quantity,
+                                    Text="{Binding Path=QuantityOrder,
                                                    StringFormat={}Количество: {0}}"
                                     Grid.Row="3"
                                     Grid.Column="0"

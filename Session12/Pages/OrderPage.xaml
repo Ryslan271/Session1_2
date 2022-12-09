@@ -122,11 +122,15 @@
                     Margin="0 0 20 0">
             
             <Button Content="Просмотреть"
+                    Click="ButtonOperOrderClick"
+                    VerticalAlignment="Center"
                     Padding="4"/>
 
             <Button Content="Оформить"
                     Padding="4"
-                    Margin="20 0 0 0" Click="Button_Click"/>
+                    Margin="20 0 0 0"
+                    VerticalAlignment="Center"
+                    Click="ButtonNewOrderClick"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -10,5 +10,9 @@ namespace Session12
     {
         public int QuantityOrder { get; set; }
         public int PurchasePrice { get; set; }
+        public int TotalPriceOrder 
+        {
+            get => PurchasePrice * QuantityOrder;
+        }
     }
 }
