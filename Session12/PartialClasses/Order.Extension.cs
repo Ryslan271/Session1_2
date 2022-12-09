@@ -7,7 +7,23 @@ namespace Session12
     {
         public string InProcessing // Статус в обработке
         {
-            get => this.OrderStatusID == 1 ? "Новый" : "В обработке";
+            get
+            {
+                if (this.OrderStatusID == 1)
+                    return "Новый";
+                else if (this.OrderStatusID == 2)
+                    return "В обработке";
+                else if (this.OrderStatusID == 3)
+                    return "К оплате";
+                else if (this.OrderStatusID == 4)
+                    return "Оплачен";
+                else if (this.OrderStatusID == 5)
+                    return "Выполнение";
+                else if (this.OrderStatusID == 6)
+                    return "Готов";
+
+                return "Отклонен";
+            }
         }
 
         public int Quantity

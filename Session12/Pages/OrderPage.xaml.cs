@@ -31,15 +31,15 @@ namespace Session12.Pages
 
         private void ButtonOperOrderClick(object sender, RoutedEventArgs e)
         {
-            MainWindow.Instance.OrdersListButton.IsChecked = true;
-            MainWindow.Instance.MakeOrderButton.IsChecked = false;
+            MainWindow.Instance.OrdersListButton.IsChecked = false;
+            MainWindow.Instance.MakeOrderButton.IsChecked = true;
             MainWindow.Instance.MainFrame.Navigate(new Pages.MakeOrderPage(OrdersList.SelectedItem as Order));
         }
 
         private void ButtonNewOrderClick(object sender, RoutedEventArgs e)
         {
-            MainWindow.Instance.OrdersListButton.IsChecked = true;
-            MainWindow.Instance.MakeOrderButton.IsChecked = false;
+            MainWindow.Instance.OrdersListButton.IsChecked = false;
+            MainWindow.Instance.MakeOrderButton.IsChecked = true;
             MainWindow.Instance.MainFrame.Navigate(new Pages.MakeOrderPage());
         }
     }
