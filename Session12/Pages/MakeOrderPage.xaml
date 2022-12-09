@@ -12,8 +12,15 @@
     <Border BorderBrush="Black"
             BorderThickness="1"
             Margin="10">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal">
+                
                 <TextBlock Text="{Binding CurrentOrder.ID,
                               StringFormat='{}Номер: {0}'}"
                         Margin="10 0 10 0"/>
@@ -27,42 +34,45 @@
 
                 <Button Content="Удалить"
                         Margin="0 0 20 0"
-                        Padding="5"/>
+                        Padding="5"
+                        VerticalAlignment="Center" Click="ButtonDeleteClick"/>
 
                 <Button Content="Добавить"
-                        Margin="0 0 10 0"/>
+                        Margin="0 0 10 0"
+                        Padding="5"
+                        VerticalAlignment="Center" Click="ButtonAddProductClick"/>
             </StackPanel>
 
-            <ScrollViewer >
-                <ListView Margin="0 10 0 0"
-                          x:Name="ProductList"
+            <ListView Margin="0 10 0 0"
+                          Grid.Row="1"
+                          x:Name="ProductListMake"
                           ItemsSource="{Binding CurrentOrder.Order_Product}"
                           d:ItemsSource="{d:SampleData ItemCount=2}"
                           BorderBrush="Black"
                           BorderThickness="2"
                           ItemContainerStyle="{StaticResource ResourceKey=ListBoxProducts}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <Border DataContext="{Binding Product}"
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border DataContext="{Binding Product}"
                             BorderBrush="Black"
                             BorderThickness=" 0 0 0 2"
                             Padding="10"
                             CornerRadius="3">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                                    <Border
+                                <Border
                                     Width="100"
                                     Height="100"
                                     Margin="0 0 10 0"
@@ -71,45 +81,45 @@
                                     BorderBrush="Black"
                                     BorderThickness="2"
                                     VerticalAlignment="Center">
-                                        <Image
+                                    <Image
                                         Width="100"
                                         Height="100">
-                                            <Image.Source>
-                                                <Binding
+                                        <Image.Source>
+                                            <Binding
                                                 Path="Photo">
-                                                    <Binding.TargetNullValue>
-                                                        <BitmapImage UriSource="/Resources/Image/NetPhotoProduct.jpg"/>
-                                                    </Binding.TargetNullValue>
-                                                </Binding>
-                                            </Image.Source>
-                                        </Image>
-                                    </Border>
+                                                <Binding.TargetNullValue>
+                                                    <BitmapImage UriSource="/Resources/Image/NetPhotoProduct.jpg"/>
+                                                </Binding.TargetNullValue>
+                                            </Binding>
+                                        </Image.Source>
+                                    </Image>
+                                </Border>
 
-                                    <TextBlock 
+                                <TextBlock 
                                     Text="{Binding ID, StringFormat='{}Номер: {0}'}"
                                     Grid.Column="1"
                                     Grid.Row="0"
                                     Margin="0 0 10 0"/>
 
-                                    <TextBlock
+                                <TextBlock
                                     Grid.Column="2"
                                     Grid.Row="0"
                                     TextWrapping="Wrap"
                                     MaxWidth="200">
-                                        <TextBlock.Text>
-                                            <MultiBinding
+                                    <TextBlock.Text>
+                                        <MultiBinding
                                             StringFormat="{}Название:  {0} {1} {2}">
-                                                <Binding
+                                            <Binding
                                                 Path="Title"/>
-                                                <Binding
+                                            <Binding
                                                 Path="Quantity"/>
-                                                <Binding
+                                            <Binding
                                                 Path="MeasureUnit.Title"/>
-                                            </MultiBinding>
-                                        </TextBlock.Text>
-                                    </TextBlock>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
 
-                                    <TextBlock
+                                <TextBlock
                                     Text="{Binding Description,
                                                    StringFormat='{}Описание продукта: {0}'}"
                                     TextWrapping="Wrap"
@@ -119,42 +129,42 @@
                                     HorizontalAlignment="Left"
                                     MaxWidth="300"/>
 
-                                    <TextBlock
+                                <TextBlock
                                     Text="{Binding Path=AdditionDateTime}"
                                     Grid.Row="2"
                                     Grid.Column="1"/>
 
-                                    <TextBlock
+                                <TextBlock
                                     Text="{Binding Path=Cost,
                                                    StringFormat={}Стоимость: {0:f} рубл.}"
                                     Grid.Row="2"
                                     Grid.Column="2"
                                     Margin="0 0 10 0"/>
 
-                                    <ListBox
+                                <ListBox
                                     Margin="0 10 0 0"
                                     Grid.Column="1"
                                     Grid.ColumnSpan="2"
                                     Grid.Row="3"
                                     ItemsSource="{Binding Path=SupplierCountry}">
-                                        <ListBox.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <WrapPanel IsItemsHost="True"/>
-                                            </ItemsPanelTemplate>
-                                        </ListBox.ItemsPanel>
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border 
+                                    <ListBox.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel IsItemsHost="True"/>
+                                        </ItemsPanelTemplate>
+                                    </ListBox.ItemsPanel>
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border 
                                                 BorderBrush="{Binding Brush}"
                                                 BorderThickness="2"
                                                 Padding="3">
-                                                    <TextBlock Text="{Binding Title}"/>
-                                                </Border>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
+                                                <TextBlock Text="{Binding Title}"/>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
 
-                                    <TextBlock
+                                <TextBlock
                                     Text="{Binding Path=Quantity,
                                                    StringFormat={}Количество: {0}}"
                                     Grid.Row="3"
@@ -162,14 +172,13 @@
                                     TextWrapping="Wrap"
                                     Margin="0 0 10 0"
                                     MaxWidth="120"/>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-            <DockPanel>
+            <DockPanel Grid.Row="2">
                 <StackPanel Orientation="Horizontal"
                     Margin="0 10 0 0"
                     DockPanel.Dock="Left">
@@ -187,9 +196,10 @@
                         HorizontalAlignment="Right"
                         Margin="0 0 10 0"
                         Content="Сохранить"
-                        Padding="5"/>
+                        Padding="5"
+                        VerticalAlignment="Center" Click="ButtonSaveProductClick"/>
             </DockPanel>
-        </StackPanel>
+        </Grid>
     </Border>
 </Page>
 

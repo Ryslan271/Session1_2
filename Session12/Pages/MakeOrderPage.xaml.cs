@@ -20,11 +20,48 @@ namespace Session12.Pages
     /// </summary>
     public partial class MakeOrderPage : Page
     {
+        public static MakeOrderPage Instance { get; set; }
         public MakeOrderPage(Order _order = null)
         {
             CurrentOrder = _order;
 
             InitializeComponent();
+
+            Instance = this;
         }
+
+        #region Методы
+
+        private bool AskDelete() =>
+            MessageBox.Show("Вы действительно хотите удалить выбранную запись", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
+
+        private bool AskSave() =>
+           MessageBox.Show("Вы действительно хотите сохранить эти данные", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
+        #endregion
+
+        #region Обработчики
+
+        private void ButtonDeleteClick(object sender, RoutedEventArgs e)
+        {
+            if (ProductListMake.SelectedItem == null ||
+                AskDelete() == false)
+                return;
+
+            CurrentOrder.Order_Product.Remove(ProductListMake.SelectedItem as Order_Product);
+            ProductListMake.Items.Refresh();
+            App.db.SaveChanges();
+        }
+
+        private void ButtonSaveProductClick(object sender, RoutedEventArgs e)
+        {
+            if (App.db.ChangeTracker.HasChanges() == false ||
+                AskSave() == false)
+                return;
+
+            App.db.SaveChanges();
+        }
+        private void ButtonAddProductClick(object sender, RoutedEventArgs e) => 
+            new Windows.AddProductToMakeOrderPage().ShowDialog();
+        #endregion
     }
-}
+} 

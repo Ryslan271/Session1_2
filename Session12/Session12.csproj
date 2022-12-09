@@ -65,6 +65,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DependencyProperties\AddAndEditProduct.Extension.cs" />
+    <Compile Include="DependencyProperties\AddProductToMakeOrderPage.Extension.cs" />
     <Compile Include="DependencyProperties\MakeOrderPage.Extension.cs" />
     <Compile Include="DependencyProperties\OrderPage.Extension.cs" />
     <Compile Include="DependencyProperties\PersonalCabinetPage.Extension.cs" />
@@ -74,6 +75,10 @@
     </Compile>
     <Compile Include="Pages\MakeOrderPage.xaml.cs">
       <DependentUpon>MakeOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialClasses\Product.Extension.cs" />
+    <Compile Include="Windows\AddProductToMakeOrderPage.xaml.cs">
+      <DependentUpon>AddProductToMakeOrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -158,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Style\StyleToOrderList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddProductToMakeOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

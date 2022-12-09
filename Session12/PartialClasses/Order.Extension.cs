@@ -1,7 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Windows.Data;
 
 namespace Session12
 {
@@ -9,8 +7,8 @@ namespace Session12
     {
         public string InProcessing // Статус в обработке
         {
-            get 
-            { 
+            get
+            {
                 return this.OrderStatus.ID == 1 ? "Новый" : "В обработке";
             }
         }
