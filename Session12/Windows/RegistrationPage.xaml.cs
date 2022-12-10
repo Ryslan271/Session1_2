@@ -39,7 +39,7 @@ namespace Session12.Windows
                 PhoneNumber = PhoneBox.Text.Trim(),
                 Patronymic = PhynimicBox.Text.Trim(),
                 GenderID = Convert.ToInt32((GenderBox.SelectedItem as ComboBoxItem).Tag),
-                RoleID = 1
+                RoleID = 4
             };
 
         private bool ValidateChangesData() =>

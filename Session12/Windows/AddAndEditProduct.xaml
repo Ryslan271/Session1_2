@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Session12.Pages"
       mc:Ignorable="d" 
       Height="550" Width="900"
-      Title="AddAndEditProductPage"
+      Title="Изменение списка товаров"
       Name="Root"
       DataContext="{Binding RelativeSource={RelativeSource Self}}"
       Closing="Root_Closing"

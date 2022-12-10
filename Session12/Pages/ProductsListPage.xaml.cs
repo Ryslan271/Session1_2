@@ -63,6 +63,10 @@ namespace Session12.Pages
             SortedProductList();
         }
 
+        private bool Ask() =>
+            MessageBox.Show("Вы действительно хотите удалить эту запись?", "Уведомление",
+                MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes;
+
         #endregion
 
         #region Фильтрация 
@@ -201,6 +205,23 @@ namespace Session12.Pages
 
         private void AddProdutc(object sender, RoutedEventArgs e) =>
             new Windows.AddAndEditProduct().ShowDialog();
+
+        private void DeleteProductInProductList(object sender, RoutedEventArgs e)
+        {
+            if (ProductList.SelectedItem == null)
+                return;
+
+            if (Ask() == false)
+                return;
+
+            App.db.Product.Local.Remove(ProductList.SelectedItem as Product);
+
+            App.db.SaveChanges();
+            
+            NumberPage = 1;
+            Page();
+        }
         #endregion
+
     }
 }
