@@ -72,7 +72,7 @@ namespace Session12.Windows
 
             App.db.SaveChanges();
 
-            Products.Remove(ProductListMake.SelectedItem as Product);
+            Products.Remove(product);
 
             MakeOrderPage.Instance.ProductListMake.Items.Refresh();
         }

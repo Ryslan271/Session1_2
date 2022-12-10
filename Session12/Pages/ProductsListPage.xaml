@@ -96,7 +96,8 @@
                         <Border BorderBrush="Black"
                                 BorderThickness=" 0 0 0 2"
                                 Padding="10"
-                                CornerRadius="3">
+                                CornerRadius="3"
+                                Background="{Binding BrushColorCount}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
