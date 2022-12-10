@@ -69,22 +69,10 @@
     <Compile Include="DependencyProperties\MakeOrderPage.Extension.cs" />
     <Compile Include="DependencyProperties\OrderPage.Extension.cs" />
     <Compile Include="DependencyProperties\PersonalCabinetPage.Extension.cs" />
+    <Compile Include="DependencyProperties\ProductIncomingListPage.Extension.cs" />
     <Compile Include="DependencyProperties\ProductsListPage.Extension.cs" />
     <Compile Include="Gender.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MakeOrderPage.xaml.cs">
-      <DependentUpon>MakeOrderPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PartialClasses\Product.Extension.cs" />
-    <Compile Include="Windows\AddProductToMakeOrderPage.xaml.cs">
-      <DependentUpon>AddProductToMakeOrderPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\RegistrationPage.xaml.cs">
-      <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MeasureUnit.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
@@ -97,6 +85,41 @@
     </Compile>
     <Compile Include="Order_Product.cs">
       <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MakeOrderPage.xaml.cs">
+      <DependentUpon>MakeOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProductIncomingListPage.xaml.cs">
+      <DependentUpon>ProductIncomingListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PartialClasses\Order_Product.Extension.cs" />
+    <Compile Include="PartialClasses\Product.Extension.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductsReceipt.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierCountry.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>Sessio.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddProductToMakeOrderPage.xaml.cs">
+      <DependentUpon>AddProductToMakeOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
@@ -113,15 +136,6 @@
       <DependentUpon>ProductsListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PartialClasses\SupplierCountry.Extension.cs" />
-    <Compile Include="Product.cs">
-      <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductsReceipt.cs">
-      <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Role.cs">
-      <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
     <Compile Include="Sessio.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,15 +151,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Sessio.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Supplier.cs">
-      <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SupplierCountry.cs">
-      <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>Sessio.tt</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -159,6 +164,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\MakeOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ProductIncomingListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Style\StyleProductIncomingListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,45 +15,34 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel
-            Grid.Row="0"
-            Orientation="Horizontal"
-            VerticalAlignment="Center"
-            Style="{StaticResource ResourceKey=StyleStackPanelProductSortFilterSeacher}"
-            Margin="0 0 0 15">
-            <StackPanel
-                Orientation="Vertical"
-                Margin="10 0 15 0">
-                <TextBlock 
-                    Text="Сортировка"
-                    Margin="0 0 0 5"/>
-                <ComboBox
-                    SelectedIndex="0"
-                    x:Name="SortProduct">
-                    <ComboBoxItem
-                        Tag="AToZ"
-                        Content="От А до Я"/>
-                    <ComboBoxItem
-                        Tag="ZtoA"
-                        Content="От Я до А"/>
-                    <ComboBoxItem
-                        Tag="DateAscending"
-                        Content="Дата по возрастанию"/>
-                    <ComboBoxItem
-                        Tag="DateDescending"
-                        Content="Дата по убыванию"/>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Style="{StaticResource ResourceKey=StyleStackPanelProductSortFilterSeacher}"
+                    Margin="0 0 0 15">
+            <StackPanel Orientation="Vertical"
+                        Margin="10 0 15 0">
+                <TextBlock Text="Сортировка"
+                           Margin="0 0 0 5"/>
+                <ComboBox SelectedIndex="0"
+                          x:Name="SortProduct">
+                    <ComboBoxItem Tag="AToZ"
+                                  Content="От А до Я"/>
+                    <ComboBoxItem Tag="ZtoA"
+                                  Content="От Я до А"/>
+                    <ComboBoxItem Tag="DateAscending"
+                                  Content="Дата по возрастанию"/>
+                    <ComboBoxItem Tag="DateDescending"
+                                  Content="Дата по убыванию"/>
                 </ComboBox>
             </StackPanel>
-            <StackPanel
-                Orientation="Vertical"
-                Margin="0 0 15 0">
-                <TextBlock
-                    Text="Единица изменения"
-                    Margin="0 0 0 5"/>
-                <ComboBox
-                    x:Name="FilterProduct"
-                    ItemsSource="{Binding MeasureUnits}"
-                    SelectedIndex="0">
+            <StackPanel Orientation="Vertical"
+                        Margin="0 0 15 0">
+                <TextBlock Text="Единица изменения"
+                           Margin="0 0 0 5"/>
+                <ComboBox x:Name="FilterProduct"
+                          ItemsSource="{Binding MeasureUnits}"
+                          SelectedIndex="0">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <ComboBoxItem Tag="{Binding Title}"
@@ -62,30 +51,24 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
-            <StackPanel
-                Margin="0 0 15 0"
-                Orientation="Vertical">
-                <TextBlock
-                    Text="Название или описание"
-                    Margin="0 0 0 5"/>
-                <TextBox
-                    MinHeight="23"
-                    MinWidth="150"
-                    x:Name="NameDisSearchTb"/>
+            <StackPanel Margin="0 0 15 0"
+                        Orientation="Vertical">
+                <TextBlock Text="Название или описание"
+                           Margin="0 0 0 5"/>
+                <TextBox MinHeight="23"
+                         MinWidth="150"
+                         x:Name="NameDisSearchTb"/>
             </StackPanel>
-            <StackPanel
-                 Margin="0 0 10 0">
-                <TextBlock
-                    Text="Количество элементов"
-                    Width="150"
-                    Margin="0 0 0 5"
-                    TextWrapping="Wrap"/>
+            <StackPanel Margin="0 0 10 0">
+                <TextBlock Text="Количество элементов"
+                           Width="150"
+                           Margin="0 0 0 5"
+                           TextWrapping="Wrap"/>
                 
-                <ComboBox
-                    x:Name="NumberProductInList"
-                    VerticalAlignment="Bottom"
-                    SelectionChanged="ComboBox_SelectionChanged"
-                    SelectedIndex="0">
+                <ComboBox x:Name="NumberProductInList"
+                          VerticalAlignment="Bottom"
+                          SelectionChanged="ComboBox_SelectionChanged"
+                          SelectedIndex="0">
                     
                     <ComboBoxItem Content="2"
                                   Tag="2"/>
@@ -101,20 +84,19 @@
             </StackPanel>
         </StackPanel>
 
-        <ScrollViewer VerticalScrollBarVisibility="Visible" Grid.Row="1">
-            <ListView
-                x:Name="ProductList"
-                ItemsSource="{Binding Products}"
-                d:ItemsSource="{d:SampleData ItemCount=2}"
-                BorderBrush="Black"
-                ItemContainerStyle="{StaticResource ResourceKey=ListBoxProducts}">
+        <ScrollViewer VerticalScrollBarVisibility="Visible"
+                      Grid.Row="1">
+            <ListView x:Name="ProductList"
+                      ItemsSource="{Binding Products}"
+                      d:ItemsSource="{d:SampleData ItemCount=2}"
+                      BorderBrush="Black"
+                      ItemContainerStyle="{StaticResource ResourceKey=ListBoxProducts}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border
-                            BorderBrush="Black"
-                            BorderThickness=" 0 0 0 2"
-                            Padding="10"
-                            CornerRadius="3">
+                        <Border BorderBrush="Black"
+                                BorderThickness=" 0 0 0 2"
+                                Padding="10"
+                                CornerRadius="3">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -129,21 +111,18 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <Border
-                                    Width="100"
-                                    Height="100"
-                                    Margin="0 0 10 0"
-                                    Grid.Column="0"
-                                    Grid.RowSpan="2"
-                                    BorderBrush="Black"
-                                    BorderThickness="2"
-                                    VerticalAlignment="Center">
-                                    <Image
-                                        Width="100"
-                                        Height="100">
+                                <Border Width="100"
+                                        Height="100"
+                                        Margin="0 0 10 0"
+                                        Grid.Column="0"
+                                        Grid.RowSpan="2"
+                                        BorderBrush="Black"
+                                        BorderThickness="2"
+                                        VerticalAlignment="Center">
+                                    <Image Width="100"
+                                            Height="100">
                                         <Image.Source>
-                                            <Binding
-                                                Path="Photo">
+                                            <Binding Path="Photo">
                                                 <Binding.TargetNullValue>
                                                     <BitmapImage UriSource="/Resources/Image/NetPhotoProduct.jpg"/>
                                                 </Binding.TargetNullValue>
@@ -152,83 +131,77 @@
                                     </Image>
                                 </Border>
 
-                                <TextBlock 
-                                    Text="{Binding ID, StringFormat='{}Номер: {0}'}"
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    Margin="0 0 10 0"/>
+                                <TextBlock  Text="{Binding ID, StringFormat='{}Номер: {0}'}"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            Margin="0 0 10 0"/>
 
-                                <TextBlock
-                                    Grid.Column="2"
-                                    Grid.Row="0"
-                                    TextWrapping="Wrap"
-                                    MaxWidth="200">
+                                <TextBlock Grid.Column="2"
+                                           Grid.Row="0"
+                                           TextWrapping="Wrap"
+                                           MaxWidth="200">
                                     <TextBlock.Text>
-                                        <MultiBinding
-                                            StringFormat="{}Название:  {0} {1} {2}">
-                                            <Binding
-                                                Path="Title"/>
-                                            <Binding
-                                                Path="Quantity"/>
-                                            <Binding
-                                                Path="MeasureUnit.Title"/>
+                                        <MultiBinding StringFormat="{}Название:  {0} {1} {2}">
+                                            <Binding Path="Title"/>
+                                            <Binding Path="Quantity"/>
+                                            <Binding Path="MeasureUnit.Title"/>
                                         </MultiBinding>
                                     </TextBlock.Text>
                                 </TextBlock>
 
-                                <TextBlock
-                                    Text="{Binding Path=Description,
+                                <TextBlock Text="{Binding Path=Description,
                                                    StringFormat='{}Описание продукта: {0}'}"
-                                    TextWrapping="Wrap"
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    Grid.ColumnSpan="2"
-                                    HorizontalAlignment="Left"
-                                    MaxWidth="300"/>
+                                           TextWrapping="Wrap"
+                                           Grid.Column="1"
+                                           Grid.Row="1"
+                                           Grid.ColumnSpan="2"
+                                           HorizontalAlignment="Left"
+                                           MaxWidth="300"/>
 
-                                <TextBlock
-                                    Text="{Binding Path=AdditionDateTime}"
-                                    Grid.Row="2"
-                                    Grid.Column="1"/>
+                                <TextBlock Text="{Binding Path=AdditionDateTime}"
+                                           Grid.Row="2"
+                                           Grid.Column="1"/>
 
-                                <TextBlock
-                                    Text="{Binding Path=Cost,
+                                <TextBlock Text="{Binding Path=Cost,
                                                    StringFormat={}Стоимость: {0:f} рубл.}"
-                                    Grid.Row="2"
-                                    Grid.Column="2"
-                                    Margin="0 0 10 0"/>
+                                           Grid.Row="2"
+                                           Grid.Column="2"
+                                           Margin="0 0 10 0"/>
 
-                                <ListBox
-                                    Margin="0 10 0 0"
-                                    Grid.Column="1"
-                                    Grid.ColumnSpan="2"
-                                    Grid.Row="3"
-                                    ItemsSource="{Binding Path=SupplierCountry}">
-                                    <ListBox.ItemsPanel>
-                                        <ItemsPanelTemplate>
-                                            <WrapPanel IsItemsHost="True"/>
-                                        </ItemsPanelTemplate>
-                                    </ListBox.ItemsPanel>
-                                    <ListBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border 
-                                                BorderBrush="{Binding Brush}"
-                                                BorderThickness="2"
-                                                Padding="3">
-                                                <TextBlock Text="{Binding Title}"/>
-                                            </Border>
-                                        </DataTemplate>
-                                    </ListBox.ItemTemplate>
-                                </ListBox>
-
-                                <TextBlock
-                                    Text="{Binding Path=Quantity,
+                                <Border Margin="0 10 0 0"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Row="3"
+                                        BorderBrush="Black"
+                                        BorderThickness="1"
+                                        Padding="5">
+                                    
+                                    <ItemsControl ItemsSource="{Binding Path=SupplierCountry}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel IsItemsHost="True"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Margin="0 0 10 0"
+                                                        BorderBrush="{Binding Brush}"
+                                                        BorderThickness="2"
+                                                        Padding="3">
+                                                    <TextBlock Text="{Binding Title}"/>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+                                
+                                <TextBlock Text="{Binding Path=Quantity,
                                                    StringFormat={}Количество: {0}}"
-                                    Grid.Row="3"
-                                    Grid.Column="0"
-                                    TextWrapping="Wrap"
-                                    Margin="0 0 10 0"
-                                    MaxWidth="120"/>
+                                           Grid.Row="3"
+                                           Grid.Column="0"
+                                           TextWrapping="Wrap"
+                                           Margin="0 0 10 0"
+                                           MaxWidth="120"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
@@ -236,48 +209,49 @@
             </ListView>
         </ScrollViewer>
 
-        <StackPanel
-            HorizontalAlignment="Right"
-            Grid.Row="2"
-            Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Right"
+                    Grid.Row="2"
+                    Orientation="Horizontal">
 
-            <TextBlock 
-                VerticalAlignment="Center"
-                Text="{Binding Path=CountProductOnPage,
-                StringFormat='{}Количество продуктов на странице: {0}'}"
-                Margin="0 0 20 0"/>
+            <TextBlock VerticalAlignment="Center"
+                       Text="{Binding Path=CountProductOnPage,
+                       StringFormat='{}Количество продуктов на странице: {0}'}"
+                       Margin="0 0 20 0"/>
 
-            <StackPanel Orientation="Horizontal">
-                <Button 
-                    Padding="5"
-                    Content="Добавить"
-                    Margin="10" Click="AddProdutc"/>
-                <Button 
-                    Padding="5"
-                    Content="Редактировать"
-                    Margin="10" Click="EditProduct"/>
+            <StackPanel Orientation="Horizontal" Visibility="{Binding user.VisibilitiButton}">
+                
+                <Button Padding="5"
+                        Content="Добавить"
+                        Margin="10"
+                        Click="AddProdutc"
+                        Visibility="{Binding user.VisibilitiButton}"/>
+                
+                <Button Padding="5"
+                        Content="Редактировать"
+                        Margin="10"
+                        Click="EditProduct"
+                        Visibility="{Binding user.VisibilitiButton}"/>
             </StackPanel>
             
-            <StackPanel
-                Orientation="Horizontal"
-                HorizontalAlignment="Right"
-                Margin="0 0 20 0">
-                <Button 
-                    Content="&lt;"
-                    Height="35"
-                    Width="20"
-                    FontSize="18"
-                    Click="ButtonClickLeftPage"/>
-                <TextBlock 
-                    Text="{Binding Path=NumberPage}"
-                    Margin="10"
-                    FontSize="18"/>
-                <Button 
-                    Content="&gt;" 
-                    Height="35"
-                    Width="20"
-                    FontSize="18"
-                    Click="ButtonClickRightPage"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0 0 20 0">
+                
+                <Button Content="&lt;"
+                        Height="35"
+                        Width="20"
+                        FontSize="18"
+                        Click="ButtonClickLeftPage"/>
+                
+                <TextBlock Text="{Binding Path=NumberPage}"
+                           Margin="10"
+                           FontSize="18"/>
+                
+                <Button Content="&gt;" 
+                        Height="35"
+                        Width="20"
+                        FontSize="18"
+                        Click="ButtonClickRightPage"/>
             </StackPanel>
         </StackPanel>
     </Grid>

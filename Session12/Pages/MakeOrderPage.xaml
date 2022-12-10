@@ -18,8 +18,10 @@
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+            
             <StackPanel Grid.Row="0"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal"
+                           VerticalAlignment="Center">
                 
                 <TextBlock Text="{Binding CurrentOrder.ID,
                               StringFormat='{}Номер: {0}'}"
@@ -27,20 +29,43 @@
 
                 <TextBlock Text="{Binding CurrentOrder.DateTime,
                               StringFormat='{}Дата: {0}'}"/>
+
+                <TextBlock Text="Заказчики: "
+                           Margin="20 0 0 0"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding user.VisibilitiMakeAndAddOrder}"/>
+                
+                <ComboBox ItemsSource="{Binding Customers}"
+                          Visibility="{Binding user.VisibilitiMakeAndAddOrder}"
+                          SelectedIndex="0"
+                          Margin="5 0 0 0"
+                          VerticalAlignment="Center"
+                          SelectionChanged="ComboBoxSelectedCustomer"
+                          x:Name="CustomersComboBox">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <ComboBoxItem Content="{Binding Fullname}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Right">
 
-                <Button Content="Удалить"
+                <Button x:Name="DeleteProductButton"
+                        Content="Удалить"
                         Margin="0 0 20 0"
                         Padding="5"
-                        VerticalAlignment="Center" Click="ButtonDeleteClick"/>
+                        VerticalAlignment="Center"
+                        Click="ButtonDeleteClick"/>
 
-                <Button Content="Добавить"
+                <Button x:Name="AddProductButton"
+                        Content="Добавить"
                         Margin="0 0 10 0"
                         Padding="5"
-                        VerticalAlignment="Center" Click="ButtonAddProductClick"/>
+                        VerticalAlignment="Center"
+                        Click="ButtonAddProductClick"/>
             </StackPanel>
 
             <ListView Margin="0 10 0 0"
@@ -184,25 +209,14 @@
             </ListView>
 
             <DockPanel Grid.Row="2">
-                <StackPanel Orientation="Horizontal"
-                    Margin="0 10 0 0"
-                    DockPanel.Dock="Left">
-
-                    <TextBlock Text="{Binding CurrentOrder.Quantity,
-                              StringFormat='{}Общее количество: {0}'}"
-                              Margin="10 0 0 0"/>
-
-                    <TextBlock Text="{Binding CurrentOrder.TotalCost,
-                              StringFormat='{}Общая стоимость: {0}'}"
-                              Margin="10 0 0 0"/>
-                </StackPanel>
-
-                <Button DockPanel.Dock="Right"
+                <Button x:Name="SaveOrderButton"
+                        DockPanel.Dock="Right"
                         HorizontalAlignment="Right"
                         Margin="0 0 10 0"
                         Content="Сохранить"
                         Padding="5"
-                        VerticalAlignment="Center" Click="ButtonSaveProductClick"/>
+                        VerticalAlignment="Center"
+                        Click="ButtonSaveProductClick"/>
             </DockPanel>
         </Grid>
     </Border>

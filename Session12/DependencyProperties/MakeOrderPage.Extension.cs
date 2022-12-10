@@ -14,8 +14,6 @@ namespace Session12.Pages
         public static readonly DependencyProperty ProdutcsProperty =
             DependencyProperty.Register("Produtcs", typeof(ObservableCollection<Product>), typeof(MakeOrderPage));
 
-
-
         public Order CurrentOrder
         {
             get { return (Order)GetValue(CurrentOrderProperty); }
@@ -24,5 +22,15 @@ namespace Session12.Pages
 
         public static readonly DependencyProperty CurrentOrderProperty =
             DependencyProperty.Register("CurrentOrder", typeof(Order), typeof(MakeOrderPage));
+
+
+        public ObservableCollection<User> Customers
+        {
+            get { return (ObservableCollection<User>)GetValue(CustomersProperty); }
+            set { SetValue(CustomersProperty, value); }
+        }
+
+        public static readonly DependencyProperty CustomersProperty =
+            DependencyProperty.Register("Customers", typeof(ObservableCollection<User>), typeof(MakeOrderPage));
     }
 }

@@ -8,7 +8,8 @@
         Icon="Resources/Image/logo.png"
         Title="Доставка" 
         Height="550" 
-        Width="850">
+        Width="850"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="12*"/>
@@ -51,8 +52,10 @@
                 </RadioButton.Content>
             </RadioButton>
             
-            <RadioButton x:Name="MakeOrderButton" Style="{StaticResource MenuButton}"
-                         Click="OpenOrdersList">
+            <RadioButton x:Name="MakeOrderButton"
+                         Style="{StaticResource MenuButton}"
+                         Click="OpenOrdersList"
+                         Visibility="{Binding user.VisibilitiUserToMakeOrAddOrdernd4}">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_orders.png"
@@ -61,7 +64,8 @@
             </RadioButton>
             
             <RadioButton Style="{StaticResource MenuButton}"
-                         Click="OpenGoinYourHouseList">
+                         Click="OpenGoinYourHouseList"
+                         Visibility="{Binding user.VisibilitiButton}">
                 <RadioButton.Content>
                     <Image
                         Source="Resources/Image/icon_goinyourhouse.png"

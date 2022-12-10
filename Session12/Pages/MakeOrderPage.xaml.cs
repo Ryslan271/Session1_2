@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿    using System;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Session12.Pages
 {
@@ -20,22 +11,62 @@ namespace Session12.Pages
     /// </summary>
     public partial class MakeOrderPage : Page
     {
+        public User user { get; set; } = App.User;
         public static MakeOrderPage Instance { get; set; }
         public MakeOrderPage(Order _order = null)
         {
-            CurrentOrder = _order ?? new Order()
+            if (user.RoleID == 2) // если тот кто создает или смотрит Менеджер
             {
-                DateTime = DateTime.Now,
-                OrderStatusID = 1,
-                User = App.User
-            };
+                CurrentOrder = _order ?? new Order()
+                {
+                    DateTime = DateTime.Now,
+                    OrderStatusID = 2,
+                    User1 = user
+                };
+
+                if (_order != null && _order.User1 == null)
+                {
+                    _order.User1 = user;
+                    _order.OrderStatusID = 2;
+                }
+
+                Customers = new ObservableCollection<User>( App.db.User.Local.Where(x => x.RoleID == 4) );
+            }
+            else
+            {
+                CurrentOrder = _order ?? new Order()
+                {
+                    DateTime = DateTime.Now,
+                    OrderStatusID = 1,
+                    User = user
+                };
+
+                if (_order != null)
+                {
+                    _order.User1 = user;
+                    _order.OrderStatusID = 1;
+                }
+            }
+
 
             InitializeComponent();
+
+            VisibilitiButtonDueToStatus();
 
             Instance = this;
         }
 
         #region Методы
+
+        private void VisibilitiButtonDueToStatus()
+        {
+            if (CurrentOrder.OrderStatusID != 6)
+                return;
+
+            DeleteProductButton.Visibility = Visibility.Collapsed;
+            AddProductButton.Visibility = Visibility.Collapsed;
+            SaveOrderButton.Visibility = Visibility.Collapsed;
+        }
 
         private bool AskDelete() =>
             MessageBox.Show("Вы действительно хотите удалить выбранную запись", "Уведомление", MessageBoxButton.YesNo) == MessageBoxResult.Yes;
@@ -59,13 +90,30 @@ namespace Session12.Pages
 
         private void ButtonSaveProductClick(object sender, RoutedEventArgs e)
         {
-            if (AskSave() == false)
+            if (AskSave() == false &&
+                CurrentOrder.User == null &&
+                CurrentOrder.User1 == null)
+            {
+                MessageBox.Show("Пожалуйста, убедитесь, что поле заказчика заполнено");
                 return;
+            }
 
             App.db.SaveChanges();
+
+            MainWindow.Instance.OrdersListButton.IsChecked = true;
+            MainWindow.Instance.MakeOrderButton.IsChecked = false;
+            MainWindow.Instance.MainFrame.Navigate(new Pages.OrderPage());
         }
-        private void ButtonAddProductClick(object sender, RoutedEventArgs e) => 
+        private void ButtonAddProductClick(object sender, RoutedEventArgs e) =>
             new Windows.AddProductToMakeOrderPage().ShowDialog();
         #endregion
+
+        private void ComboBoxSelectedCustomer(object sender, SelectionChangedEventArgs e)
+        {
+            if (CustomersComboBox.SelectedItem == null)
+                return;
+
+            CurrentOrder.User = CustomersComboBox.SelectedItem as User;
+        }
     }
-} 
+}

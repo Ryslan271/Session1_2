@@ -15,15 +15,11 @@ namespace Session12.Pages
     public partial class ProductsListPage : Page
     {
         #region Свойства 
-
+        public User user { get; set; } = App.User;
         public static ProductsListPage Instance { get; set; }
-
         public List<MeasureUnit> MeasureUnits { get; set; }
-
         private ICollectionView ProductsDefault { get; set; }
-
         public ObservableCollection<int> NumberPages { get; set; } = new ObservableCollection<int>();
-
         #endregion
 
         public ProductsListPage()
@@ -65,14 +61,6 @@ namespace Session12.Pages
             }.View;
 
             SortedProductList();
-
-            if (TotalPages == 0)
-            {
-                TotalPages = (int)Math.Ceiling(Convert.ToDouble(App.db.Product.Local.Count()) / Convert.ToDouble(CountProductOnPage));
-                // максимальное количество страниц
-                for (int i = 0; i < TotalPages; i++)
-                    NumberPages.Add(i + 1); // количество страничек
-            }
         }
 
         #endregion
@@ -152,6 +140,7 @@ namespace Session12.Pages
                     break;
             }
 
+            KnowTotalPage();
             Products.Refresh();
         }
         #endregion
@@ -178,6 +167,17 @@ namespace Session12.Pages
         }
         #endregion
 
+        #region Метод для вычисление количество страниц
+
+        private void KnowTotalPage()
+        {
+            TotalPages = (int)Math.Ceiling(Convert.ToDouble(ProductsDefault.Cast<Product>().Count()) / Convert.ToDouble(CountProductOnPage));
+            // максимальное количество страниц
+            for (int i = 0; i < TotalPages; i++)
+                NumberPages.Add(i + 1); // количество страничек
+        }
+        #endregion
+
         #endregion
 
         #region Обработчики
@@ -185,7 +185,10 @@ namespace Session12.Pages
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CountProductOnPage = Convert.ToInt32((NumberProductInList.SelectedItem as ComboBoxItem).Tag);
+
             Page();
+
+            KnowTotalPage();
         }
 
         private void EditProduct(object sender, RoutedEventArgs e)

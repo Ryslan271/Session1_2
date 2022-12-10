@@ -3,9 +3,9 @@
 
     <!--ListView-->
     <!--Используется:
-                     * Заказы-->
+                     * Документ полученние товаров-->
 
-    <Style x:Key="OrderListGroupStyle" TargetType="{x:Type GroupItem}">
+    <Style x:Key="ProductIncomingListGroupStyle" TargetType="{x:Type GroupItem}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
@@ -25,5 +25,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    
 </ResourceDictionary>

@@ -23,7 +23,7 @@ namespace Session12
     
         public int ID { get; set; }
         public System.DateTime DateTime { get; set; }
-        public int UserCustomerID { get; set; }
+        public Nullable<int> UserCustomerID { get; set; }
         public Nullable<int> UserExecutorID { get; set; }
         public int OrderStatusID { get; set; }
     

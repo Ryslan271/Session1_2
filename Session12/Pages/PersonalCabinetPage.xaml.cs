@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace Session12.Pages
@@ -21,10 +22,23 @@ namespace Session12.Pages
         public PersonalCabinetPage()
         {
             MainUser = App.User;
+            MainUser.GenderID -= 1;
             Genders = App.db.Gender.Local;
 
             InitializeComponent();
         }
+
+        #region Методы
+
+        private bool ValidateChangesDataUser() => LastName.Text.Trim() == "" ||
+                                                  FirstName.Text.Trim() == "" ||
+                                                  Patronymic.Text.Trim() == "" ||
+                                                  PhoneNumber.Text.Trim() == "" ||
+                                                  Email.Text.Trim() == "" ||
+                                                  LoginBox.Text.Trim() == "" ||
+                                                  PasswordBox.Text.Trim() == "";
+        #endregion
+
 
         #region Обработчики
 
@@ -63,14 +77,30 @@ namespace Session12.Pages
             if (EditUserInformationButton != null) EditUserInformationButton.Visibility = Visibility.Visible;
         }
 
-        private void EditUserInformation(object sender, RoutedEventArgs e)
+        private void ComboBoxSelectionChangedGender(object sender, SelectionChangedEventArgs e)
         {
-            EditUserInformationButton.Visibility = Visibility.Hidden;
-            MessageInfo.Text = "Данные обновлены";
-            TimerStart();
-            App.db.SaveChanges();
+            if (EditUserInformationButton != null) EditUserInformationButton.Visibility = Visibility.Visible;
         }
 
+        private void EditUserInformation(object sender, RoutedEventArgs e)
+        {
+            if (App.db.ChangeTracker.HasChanges() == false)
+                return;
+
+            if (ValidateChangesDataUser())
+            {
+                MessageInfo.Text = "Какое то поле осталось пустым";
+                MessageInfo.Foreground = new SolidColorBrush(Colors.Red);
+            }
+
+            EditUserInformationButton.Visibility = Visibility.Hidden;
+            MessageInfo.Text = "Данные обновлены";
+            MessageInfo.Foreground = new SolidColorBrush(Colors.Green);
+            TimerStart();
+            MainUser.GenderID += 1;
+            App.User.GenderID = MainUser.GenderID;
+            App.db.SaveChanges();
+        }
         #endregion
 
         #region Таймер
@@ -78,12 +108,13 @@ namespace Session12.Pages
         private void TimerStart()
         {
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
             dispatcherTimer.Start();
         }
 
         private void dispatcherTimer_Tick(object sender, EventArgs e) => MessageInfo.Text = "";
 
         #endregion
+
     }
 }

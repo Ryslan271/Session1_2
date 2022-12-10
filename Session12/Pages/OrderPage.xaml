@@ -116,21 +116,66 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <StackPanel Grid.Row="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Margin="0 0 20 0">
-            
-            <Button Content="Просмотреть"
-                    Click="ButtonOperOrderClick"
-                    VerticalAlignment="Center"
-                    Padding="4"/>
+        <DockPanel Grid.Row="1">
 
-            <Button Content="Оформить"
-                    Padding="4"
-                    Margin="20 0 0 0"
-                    VerticalAlignment="Center"
-                    Click="ButtonNewOrderClick"/>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="20 0 0 0"
+                        DockPanel.Dock="Left">
+                
+                <Button Content="Отклонить"
+                        Click="ButtonRejectClick"
+                        VerticalAlignment="Center"
+                        Padding="4"
+                        Visibility="{Binding user.VisibilitiMakeAndAddOrder}"/>
+
+                <Button Content="Одобрить"
+                        Padding="4"
+                        Margin="20 0 0 0"
+                        VerticalAlignment="Center"
+                        Click="ButtonApproveOrderClick"
+                        Visibility="{Binding user.VisibilitiMakeAndAddOrder}"/>
+
+                <Button Content="Оплатить"
+                        Padding="4"
+                        Margin="20 0 0 0"
+                        VerticalAlignment="Center"
+                        Click="ButtonPayClick"    
+                        Visibility="{Binding user.VisibilitiUserToMakeOrAddOrder}"/>
+
+                <Button Content="Выполнение"
+                        Padding="4"
+                        Margin="20 0 0 0"
+                        VerticalAlignment="Center"
+                        Click="ButtonPerformedClick"    
+                        Visibility="{Binding user.VisibilitiUserStorekeeper}"/>
+
+                <Button Content="Выполнено"
+                        Padding="4"
+                        Margin="20 0 0 0"
+                        VerticalAlignment="Center"
+                        Click="ButtonFulfilledClick"    
+                        Visibility="{Binding user.VisibilitiUserStorekeeper}"/>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Margin="0 0 20 0"
+                        DockPanel.Dock="Right">
+
+                <Button Content="Просмотреть"
+                        Click="ButtonOperOrderClick"
+                        VerticalAlignment="Center"
+                        Padding="4"
+                        Visibility="{Binding user.VisibilitiMakeAndAddOrder}"/>
+
+                <Button Content="Оформить"
+                        Padding="4"
+                        Margin="20 0 0 0"
+                        VerticalAlignment="Center"
+                        Click="ButtonNewOrderClick"
+                        Visibility="{Binding user.VisibilitiUserToMakeOrAddOrdernd4}"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Page>

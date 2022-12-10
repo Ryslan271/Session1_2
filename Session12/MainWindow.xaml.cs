@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Session12
 {
@@ -21,13 +9,8 @@ namespace Session12
     public partial class MainWindow : Window
     {
         #region Свойства
-
-        #region Статические свойства
-
+        public User user { get; set; } = App.User;
         public static MainWindow Instance { get; set; }
-
-        #endregion
-
         #endregion
 
         public MainWindow()
@@ -39,7 +22,11 @@ namespace Session12
         }
 
         #region Обработчики
-        private void ButtonClickExit(object sender, RoutedEventArgs e) => Close();
+        private void ButtonClickExit(object sender, RoutedEventArgs e)
+        {
+            new Windows.LoginPage().Show();
+            Close();
+        }
 
         private void OpenMainList(object sender, RoutedEventArgs e)
         {
@@ -67,7 +54,8 @@ namespace Session12
 
         private void OpenGoinYourHouseList(object sender, RoutedEventArgs e)
         {
-
+            (sender as RadioButton).IsChecked = true;
+            MainFrame.Navigate(new Pages.ProductIncomingListPage());
         }
         #endregion
 

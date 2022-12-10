@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="/Resources/Style/StyleToPersonalCabinet.xaml"/>
                 <ResourceDictionary Source="/Resources/Style/StyleToProductList.xaml"/>
                 <ResourceDictionary Source="/Resources/Style/StyleToOrderList.xaml"/>
+                <ResourceDictionary Source="/Resources/Style/StyleProductIncomingListPage.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

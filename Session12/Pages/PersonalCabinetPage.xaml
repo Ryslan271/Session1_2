@@ -33,6 +33,7 @@
             Grid.RowSpan="2"
             HorizontalAlignment="Center"
             Style="{StaticResource ResourceKey=PersenCabinetStackpanel}">
+
             <TextBlock Text="Имя: "
                      Margin="0 0 10 0"/>
             <TextBox x:Name="LastName" 
@@ -98,13 +99,15 @@
                     Style="{StaticResource ResourceKey=PersenCabinetStackpanel}">
 
             <TextBlock Text="{Binding MainUser.Role.Title,
-                             StringFormat='{}Должность: {0}'}"
+                             StringFormat='{}{0}'}"
                        Margin="0 0 0 20"/>
 
             <TextBlock Text="Пол:"/>
 
             <ComboBox ItemsSource="{Binding Genders}"
-                      SelectedIndex="{Binding MainUser.GenderID}">
+                      SelectedIndex="{Binding MainUser.GenderID}"
+                      SelectionChanged="ComboBoxSelectionChangedGender"
+                      x:Name="ComboBoxGender">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <ComboBoxItem Content="{Binding Title}"

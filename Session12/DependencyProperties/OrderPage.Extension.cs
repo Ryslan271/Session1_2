@@ -1,7 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace Session12.Pages
 {
@@ -15,6 +13,5 @@ namespace Session12.Pages
 
         public static readonly DependencyProperty OrdersProperty =
             DependencyProperty.Register("Orders", typeof(ICollectionView), typeof(OrderPage));
-
     }
 }

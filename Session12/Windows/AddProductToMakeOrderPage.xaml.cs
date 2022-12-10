@@ -77,5 +77,6 @@ namespace Session12.Windows
             MakeOrderPage.Instance.ProductListMake.Items.Refresh();
         }
         #endregion
+
     }
 }

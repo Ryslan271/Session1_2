@@ -40,5 +40,7 @@ namespace Session12
         {
             get => this.Order_Product.Sum(x => x.Quantity * x.PurchasePrice);
         }
+
+
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Session12
 {
@@ -10,7 +7,7 @@ namespace Session12
     {
         public int QuantityOrder { get; set; }
         public int PurchasePrice { get; set; }
-        public int TotalPriceOrder 
+        public int TotalPriceOrder
         {
             get => PurchasePrice * QuantityOrder;
         }
