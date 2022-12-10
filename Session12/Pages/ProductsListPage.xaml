@@ -224,12 +224,14 @@
                         Content="Добавить"
                         Margin="10"
                         Click="AddProdutc"
+                        FontFamily="Bahnschrift"
                         Visibility="{Binding user.VisibilitiButton}"/>
                 
                 <Button Padding="5"
                         Content="Редактировать"
                         Margin="10"
                         Click="EditProduct"
+                        FontFamily="Bahnschrift"
                         Visibility="{Binding user.VisibilitiButton}"/>
             </StackPanel>
             
@@ -245,7 +247,9 @@
                 
                 <TextBlock Text="{Binding Path=NumberPage}"
                            Margin="10"
-                           FontSize="18"/>
+                           Padding="0 6 0 0"
+                           FontSize="20"
+                           FontFamily="Bahnschrift"/>
                 
                 <Button Content="&gt;" 
                         Height="35"

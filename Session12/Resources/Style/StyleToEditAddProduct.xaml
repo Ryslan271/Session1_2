@@ -32,7 +32,7 @@
                 Value="DemiBold"/>
         <Setter 
                 Property="TextBlock.FontFamily"
-                Value="Comic Sans MS"/>
+                Value="Bahnschrift"/>
     </Style>
     <!--#endregion-->
 
@@ -40,16 +40,15 @@
     <Style x:Key="StyleTextBox"
                TargetType="TextBox">
         <Setter Property="Background"
-                    Value="Transparent"/>
-
+                Value="Transparent"/>
+        <Setter Property="FontFamily"
+                Value="Bahnschrift"/>
         <Setter Property="Padding"
-                    Value="3"/>
-
+                Value="3"/>
         <Setter Property="BorderBrush"
-                    Value="Black"/>
-
+                Value="Black"/>
         <Setter Property="BorderThickness"
-                    Value="1"/>
+                Value="1"/>
     </Style>
     <!--#endregion-->
 </ResourceDictionary>

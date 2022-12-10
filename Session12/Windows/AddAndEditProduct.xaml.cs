@@ -16,21 +16,32 @@ namespace Session12.Windows
     /// </summary>
     public partial class AddAndEditProduct : Window
     {
-        public AddAndEditProduct(Product product)
+        public AddAndEditProduct(Product product = null)
         {
-            bool flag = App.db.Product.Local.Any(x => x == product) == false;
-
-            if (flag) product.AdditionDateTime = DateTime.Now;
-
             MeasureUnits = App.db.MeasureUnit.Local;
-            SupplierCountrys = new ObservableCollection<SupplierCountry>(App.db.SupplierCountry.Local.Except(product.SupplierCountry));
 
-            ProductEditing = product;
+            if (product != null)
+                SupplierCountrys = new ObservableCollection<SupplierCountry>(App.db.SupplierCountry.Local.Except(product.SupplierCountry));
+            else
+                SupplierCountrys = new ObservableCollection<SupplierCountry>();
+
+            
+            ProductEditing = product ?? new Product() { AdditionDateTime = DateTime.Now };
 
             InitializeComponent();
-
-            if (flag) IDStackPanel.Visibility = Visibility.Collapsed;
+            
+            if (product == null) IDStackPanel.Visibility = Visibility.Collapsed;
         }
+
+        #region Проверка на заполненность полей
+
+        private bool ValidatorProduct() =>
+                                        NameProduct.Text.Trim() == "" ||
+                                        DescriptionProduct.Text.Trim() == "" ||
+                                        CostProduct.Text.Trim() == "" ||
+                                        QuantityProduct.Text.Trim() == "";
+
+        #endregion
 
         #region Обработка ввода в TextBox
 
@@ -79,10 +90,9 @@ namespace Session12.Windows
             if (App.db.ChangeTracker.HasChanges() == false)
                 return;
 
-            switch (Ask())
+            switch (AskClose())
             {
                 case MessageBoxResult.Yes:
-                    App.db.SaveChanges();
                     ProductsListPage.Instance.Page();
                     break;
 
@@ -90,6 +100,7 @@ namespace Session12.Windows
                     foreach (var entry in App.db.ChangeTracker.Entries().Where(entry => entry.State == System.Data.Entity.EntityState.Modified))
                         entry.CurrentValues.SetValues(entry.OriginalValues);
                     ProductsListPage.Instance.Page();
+                    e.Cancel = true;
                     break;
             }
         }
@@ -103,14 +114,16 @@ namespace Session12.Windows
                             MessageBoxButton.YesNo,
                             MessageBoxImage.Warning);
 
+        private MessageBoxResult AskClose() =>
+           MessageBox.Show("Вы действительно хотите выйти, данные не сохранятся",
+                           "Уведомление",
+                           MessageBoxButton.YesNo,
+                           MessageBoxImage.Warning);
         #endregion
 
         #region Изменение изображение
 
-        private void EditImageProduct(object sender, RoutedEventArgs e)
-        {
-            ChageImage();
-        }
+        private void EditImageProduct(object sender, RoutedEventArgs e) => ChageImage();
 
         private void ChageImage()
         {
@@ -150,13 +163,25 @@ namespace Session12.Windows
 
         private void SaveChagesInProduct(object sender, RoutedEventArgs e)
         {
-            if (App.db.ChangeTracker.HasChanges() == false &&
-                ListBoxRadioBattonMeasureUnits.SelectedItem == null)
+            if (ValidatorProduct() == true)
+            {
+                MessageBox.Show("Поля не должны оставаться пустыми");
+                return;
+            }
+
+            if (ComboBoxMeasureUnits.SelectedItem == null)
+            {
+                MessageBox.Show("asd");
+                return;
+            }
+
+            if (App.db.ChangeTracker.HasChanges() == false)
                 return;
 
             switch (Ask())
             {
                 case MessageBoxResult.Yes:
+                    ProductEditing.MeasureUnitID = (ComboBoxMeasureUnits.SelectedItem as MeasureUnit).ID;
                     App.db.SaveChanges();
                     ProductsListPage.Instance.Page();
                     break;

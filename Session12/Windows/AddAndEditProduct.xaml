@@ -42,8 +42,7 @@
                             <Image.Source>
                                 <Binding Path="ProductEditing.Photo">
                                     <Binding.TargetNullValue>
-                                        <BitmapImage
-                                        UriSource="/Recourse/NetPhotoProduct.jpg"/>
+                                        <BitmapImage UriSource="/Resources/Image/NetPhotoProduct.jpg"/>
                                     </Binding.TargetNullValue>
                                 </Binding>
                             </Image.Source>
@@ -88,7 +87,8 @@
                                     Margin="0 0 0 20">
                             <TextBlock Text="Название:"
                                        Margin="0 0 10 0"/>
-                            <TextBox Text="{Binding ProductEditing.Title}"
+                            <TextBox x:Name="NameProduct"
+                                     Text="{Binding ProductEditing.Title}"
                                      Style="{StaticResource ResourceKey=StyleTextBox}"
                                      TextWrapping="Wrap"
                                      MaxWidth="400"
@@ -99,7 +99,8 @@
                                     Margin="0 0 0 20">
                             <TextBlock Text="Описание:"
                                        Margin="0 0 10 0"/>
-                            <TextBox Text="{Binding ProductEditing.Description}"
+                            <TextBox x:Name="DescriptionProduct"
+                                     Text="{Binding ProductEditing.Description}"
                                      Style="{StaticResource ResourceKey=StyleTextBox}"
                                      TextWrapping="Wrap"
                                      MaxWidth="400"
@@ -110,7 +111,8 @@
                                     Margin="0 0 0 20">
                             <TextBlock Text="Стоимость:"
                                        Margin="0 0 10 0"/>
-                            <TextBox Text="{Binding ProductEditing.Cost}"
+                            <TextBox x:Name="CostProduct"
+                                     Text="{Binding ProductEditing.Cost}"
                                      Style="{StaticResource ResourceKey=StyleTextBox}"
                                      TextWrapping="Wrap"
                                      MaxWidth="400"/>
@@ -120,7 +122,8 @@
                                     Margin="0 0 0 20">
                             <TextBlock Text="Количество:"
                                        Margin="0 0 10 0"/>
-                            <TextBox Text="{Binding ProductEditing.Quantity}"
+                            <TextBox x:Name="QuantityProduct" 
+                                     Text="{Binding ProductEditing.Quantity}"
                                      Style="{StaticResource ResourceKey=StyleTextBox}"
                                      TextWrapping="Wrap"
                                      MaxWidth="400"/>
@@ -136,23 +139,17 @@
                 <TextBlock Text="Единицы измерения"
                        Margin="10 5 0 5"/>
 
-                <ListBox ItemsSource="{Binding MeasureUnits}"
-                         x:Name="ListBoxRadioBattonMeasureUnits"
-                         Margin="10 5 10 5"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel IsItemsHost="True"/>
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    <ListBox.ItemTemplate>
+                <ComboBox ItemsSource="{Binding MeasureUnits}"
+                          x:Name="ComboBoxMeasureUnits"
+                          Margin="10 5 10 5"
+                          FontFamily="Bahnschrift"
+                          SelectedIndex="{Binding ProductEditing.MeasureUnitID}">
+                    <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <RadioButton x:Name="RadioButtonUnit"
-                                         GroupName="Name"
-                                         Content="{Binding Title}"/>
+                            <ComboBoxItem Content="{Binding Title}"/>
                         </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Grid.Column="1"
@@ -165,11 +162,12 @@
                     <TextBlock Text="Выбранные страны поставщиков"/>
 
                     <Border BorderBrush="Black"
-                        BorderThickness="1.5"
-                        Margin="5 10">
+                            BorderThickness="1.5"
+                            Margin="5 10">
                         <ListBox ItemsSource="{Binding ProductEditing.SupplierCountry}"
-                             Padding="5 10"
-                             x:Name="LeftListBoxCountry">
+                                Padding="5 10"
+                                 FontFamily="Bahnschrift"
+                                x:Name="LeftListBoxCountry">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderBrush="{Binding Brush}"
@@ -200,11 +198,12 @@
                     <TextBlock Text="Доступные cтраны поставщиков"/>
 
                     <Border BorderBrush="Black"
-                        BorderThickness="1.5"
-                        Margin="5 10">
+                            BorderThickness="1.5"
+                            Margin="5 10">
                         <ListBox ItemsSource="{Binding SupplierCountrys}"
-                             Padding="5 10"
-                             x:Name="RightListBoxCountry">
+                                 FontFamily="Bahnschrift"
+                                 Padding="5 10"
+                                 x:Name="RightListBoxCountry">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderBrush="{Binding Brush}"
@@ -220,6 +219,7 @@
             </StackPanel>
 
             <Button Content="Сохранить"
+                    FontFamily="Bahnschrift"
                     Grid.Column="1"
                     Grid.Row="3"
                     HorizontalAlignment="Right"

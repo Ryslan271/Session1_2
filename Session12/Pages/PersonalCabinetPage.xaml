@@ -124,6 +124,7 @@
         <Button
             x:Name="EditUserInformationButton"
             Grid.Column="1"
+            FontFamily="Bahnschrift"
             Grid.Row="2"
             Visibility="Hidden"
             HorizontalAlignment="Right"

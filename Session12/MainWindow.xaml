@@ -20,6 +20,13 @@
             <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
 
+        <TextBlock x:Name="MainName"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="20"
+                   FontFamily="Bahnschrift"/>
+
         <StackPanel
             Grid.Column="0"
             Grid.Row="1">

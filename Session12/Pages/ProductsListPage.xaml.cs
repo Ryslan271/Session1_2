@@ -200,7 +200,7 @@ namespace Session12.Pages
         }
 
         private void AddProdutc(object sender, RoutedEventArgs e) =>
-            new Windows.AddAndEditProduct(new Product()).ShowDialog();
+            new Windows.AddAndEditProduct().ShowDialog();
         #endregion
     }
 }

@@ -16,6 +16,7 @@
                                            FontWeight="Bold"
                                            Foreground="Gray"
                                            FontSize="22"
+                                           FontFamily="Bahnschrift"
                                            VerticalAlignment="Bottom" />
                             </StackPanel>
                         </Expander.Header>

@@ -20,7 +20,7 @@
                 Value="DemiBold"/>
         <Setter 
                 Property="TextBox.FontFamily"
-                Value="Comic Sans MS"/>
+                Value="Bahnschrift"/>
         <Setter 
                 Property="TextBox.Margin"
                 Value="0 0 0 15"/>

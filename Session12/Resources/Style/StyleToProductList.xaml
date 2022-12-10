@@ -25,7 +25,7 @@
                 Value="DemiBold"/>
         <Setter 
                 Property="TextBlock.FontFamily"
-                Value="Comic Sans MS"/>
+                Value="Bahnschrift"/>
     </Style>
     <!--#endregion-->
 
@@ -63,6 +63,8 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="FontFamily"
+                Value="Bahnschrift"/>
     </Style>
     <!--#endregion-->
     

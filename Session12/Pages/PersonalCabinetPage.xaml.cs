@@ -22,7 +22,6 @@ namespace Session12.Pages
         public PersonalCabinetPage()
         {
             MainUser = App.User;
-            MainUser.GenderID -= 1;
             Genders = App.db.Gender.Local;
 
             InitializeComponent();
@@ -97,8 +96,7 @@ namespace Session12.Pages
             MessageInfo.Text = "Данные обновлены";
             MessageInfo.Foreground = new SolidColorBrush(Colors.Green);
             TimerStart();
-            MainUser.GenderID += 1;
-            App.User.GenderID = MainUser.GenderID;
+            App.User = MainUser;
             App.db.SaveChanges();
         }
         #endregion

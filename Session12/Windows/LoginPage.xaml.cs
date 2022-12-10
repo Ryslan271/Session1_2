@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Session12.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,14 @@ namespace Session12.Windows
 
         #endregion
 
-        public LoginPage() => InitializeComponent();
+        public LoginPage()
+        { 
+            InitializeComponent();
+            if (Settings.Default.Login != null)
+                LoginBox.Text = Settings.Default.Login;
+        }
+
+        #region Обработчики
 
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +60,9 @@ namespace Session12.Windows
 
             App.User = user;
 
+            if (CheckSaveLogin.IsChecked == true)
+                Settings.Default.Login = LoginBox.Text.Trim();
+
             new MainWindow().Show();
             Close();
         }
@@ -61,5 +72,6 @@ namespace Session12.Windows
             new RegistrationPage().Show();
             Hide();
         }
+        #endregion
     }
 }

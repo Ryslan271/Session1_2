@@ -45,10 +45,12 @@
         <Separator/>
         
         <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
                     Style="{StaticResource ResourceKey=StyleStackPanel}">
             <TextBlock Text="Запомнить меня "/>
             
-            <CheckBox VerticalAlignment="Center"/>
+            <CheckBox x:Name="CheckSaveLogin"
+                      VerticalAlignment="Center"/>
         </StackPanel>
         
         <Separator/>

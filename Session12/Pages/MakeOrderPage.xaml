@@ -12,7 +12,7 @@
     <Border BorderBrush="Black"
             BorderThickness="1"
             Margin="10">
-        <Grid>
+        <Grid Style="{StaticResource GridInMakeOrderPage}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="10*"/>
@@ -21,7 +21,7 @@
             
             <StackPanel Grid.Row="0"
                         Orientation="Horizontal"
-                           VerticalAlignment="Center">
+                        VerticalAlignment="Center">
                 
                 <TextBlock Text="{Binding CurrentOrder.ID,
                               StringFormat='{}Номер: {0}'}"
@@ -37,6 +37,7 @@
                 
                 <ComboBox ItemsSource="{Binding Customers}"
                           Visibility="{Binding user.VisibilitiMakeAndAddOrder}"
+                          Style="{StaticResource ComboBoxInMakeOrderPage}"
                           SelectedIndex="0"
                           Margin="5 0 0 0"
                           VerticalAlignment="Center"

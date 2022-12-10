@@ -13,6 +13,9 @@
         <Setter
                 Property="Height"
                 Value="55" />
+        <Setter 
+                Property="FontFamily"
+                Value="Bahnschrift"/>
         <Setter
                 Property="HorizontalAlignment"
                 Value="Left" />

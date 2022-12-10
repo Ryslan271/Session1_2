@@ -125,11 +125,13 @@
                 
                 <Button Content="Отклонить"
                         Click="ButtonRejectClick"
+                        FontFamily="Bahnschrift"
                         VerticalAlignment="Center"
                         Padding="4"
                         Visibility="{Binding user.VisibilitiMakeAndAddOrder}"/>
 
                 <Button Content="Одобрить"
+                        FontFamily="Bahnschrift"
                         Padding="4"
                         Margin="20 0 0 0"
                         VerticalAlignment="Center"
@@ -137,6 +139,7 @@
                         Visibility="{Binding user.VisibilitiMakeAndAddOrder}"/>
 
                 <Button Content="Оплатить"
+                        FontFamily="Bahnschrift"
                         Padding="4"
                         Margin="20 0 0 0"
                         VerticalAlignment="Center"
@@ -144,6 +147,7 @@
                         Visibility="{Binding user.VisibilitiUserToMakeOrAddOrder}"/>
 
                 <Button Content="Выполнение"
+                        FontFamily="Bahnschrift"
                         Padding="4"
                         Margin="20 0 0 0"
                         VerticalAlignment="Center"
@@ -151,6 +155,7 @@
                         Visibility="{Binding user.VisibilitiUserStorekeeper}"/>
 
                 <Button Content="Выполнено"
+                        FontFamily="Bahnschrift"
                         Padding="4"
                         Margin="20 0 0 0"
                         VerticalAlignment="Center"
@@ -164,12 +169,14 @@
                         DockPanel.Dock="Right">
 
                 <Button Content="Просмотреть"
+                        FontFamily="Bahnschrift"
                         Click="ButtonOperOrderClick"
                         VerticalAlignment="Center"
                         Padding="4"
                         Visibility="{Binding user.VisibilitiMakeAndAddOrder}"/>
 
                 <Button Content="Оформить"
+                        FontFamily="Bahnschrift"
                         Padding="4"
                         Margin="20 0 0 0"
                         VerticalAlignment="Center"

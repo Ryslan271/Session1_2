@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--ListView-->
+    <!--Используется:
+                     * Добавление и редактирование заказа-->
+
+    <Style x:Key="GridInMakeOrderPage" TargetType="Grid">
+        <Setter Property="TextBlock.FontFamily"
+                Value="Bahnschrift"/>
+    </Style>
+
+    <Style x:Key="ComboBoxInMakeOrderPage" TargetType="ComboBox">
+        <Setter Property="FontFamily"
+                Value="Bahnschrift"/>
+    </Style>
+</ResourceDictionary>
