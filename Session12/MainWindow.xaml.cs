@@ -17,6 +17,7 @@ namespace Session12
         {
             InitializeComponent();
             Instance = this;
+            MainName.Text = "Личный кабинет";
             ParsonCabinet.IsChecked = true;
             MainFrame.Navigate(new Pages.PersonalCabinetPage());
         }
@@ -30,30 +31,35 @@ namespace Session12
 
         private void OpenMainList(object sender, RoutedEventArgs e)
         {
+            MainName.Text = "Личный кабинет";
             (sender as RadioButton).IsChecked = true;
             MainFrame.Navigate(new Pages.PersonalCabinetPage());
         }
 
         private void OpenProductList(object sender, RoutedEventArgs e)
         {
+            MainName.Text = "Список продуктов";
             (sender as RadioButton).IsChecked = true;
             MainFrame.Navigate(new Pages.ProductsListPage());
         }
 
         private void OpenPostavchikList(object sender, RoutedEventArgs e)
         {
+            MainName.Text = "Список заказов";
             (sender as RadioButton).IsChecked = true;
             MainFrame.Navigate(new Pages.OrderPage());
         }
 
         private void OpenOrdersList(object sender, RoutedEventArgs e)
         {
+            MainName.Text = "Оформление заказа";
             (sender as RadioButton).IsChecked = true;
             MainFrame.Navigate(new Pages.MakeOrderPage());
         }
 
         private void OpenGoinYourHouseList(object sender, RoutedEventArgs e)
         {
+            MainName.Text = "Поступление продуктов";
             (sender as RadioButton).IsChecked = true;
             MainFrame.Navigate(new Pages.ProductIncomingListPage());
         }

@@ -100,9 +100,10 @@ namespace Session12.Pages
 
             App.db.SaveChanges();
 
+            MainWindow.Instance.MainName.Text = "Список продуктов";
             MainWindow.Instance.OrdersListButton.IsChecked = true;
             MainWindow.Instance.MakeOrderButton.IsChecked = false;
-            MainWindow.Instance.MainFrame.Navigate(new Pages.OrderPage());
+            MainWindow.Instance.MainFrame.Navigate(new OrderPage());
         }
         private void ButtonAddProductClick(object sender, RoutedEventArgs e) =>
             new Windows.AddProductToMakeOrderPage().ShowDialog();

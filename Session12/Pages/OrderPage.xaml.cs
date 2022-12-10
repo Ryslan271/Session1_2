@@ -52,6 +52,7 @@ namespace Session12.Pages
             if (OrdersList.SelectedItem == null)
                 return;
 
+            MainWindow.Instance.MainName.Text = "Оформление заказа";
             MainWindow.Instance.OrdersListButton.IsChecked = false;
             MainWindow.Instance.MakeOrderButton.IsChecked = true;
             MainWindow.Instance.MainFrame.Navigate(new MakeOrderPage(OrdersList.SelectedItem as Order));
@@ -59,6 +60,7 @@ namespace Session12.Pages
 
         private void ButtonNewOrderClick(object sender, RoutedEventArgs e)
         {
+            MainWindow.Instance.MainName.Text = "Оформление заказа";
             MainWindow.Instance.OrdersListButton.IsChecked = false;
             MainWindow.Instance.MakeOrderButton.IsChecked = true;
             MainWindow.Instance.MainFrame.Navigate(new MakeOrderPage());
